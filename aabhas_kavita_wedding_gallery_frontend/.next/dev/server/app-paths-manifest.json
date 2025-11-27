@@ -1,0 +1,7 @@
+{
+  "/api/media/[id]/route": "app/api/media/[id]/route.js",
+  "/function/[id]/page": "app/function/[id]/page.js",
+  "/function/[id]/photos/page": "app/function/[id]/photos/page.js",
+  "/gallery/page": "app/gallery/page.js",
+  "/page": "app/page.js"
+}

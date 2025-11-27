@@ -1,0 +1,131 @@
+"use client"
+
+import { useState, useEffect } from 'react'
+import { Upload, Sparkles, Download } from 'lucide-react'
+import { UploadModal } from './upload-modal'
+import { HowToDownloadModal } from './how-to-download-modal'
+import { motion, AnimatePresence } from 'framer-motion'
+
+interface Function {
+  id: number
+  name: string
+}
+
+interface FloatingUploadButtonProps {
+  functions: Function[]
+  onUploadComplete: () => void
+}
+
+export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUploadButtonProps) {
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
+  const [hasSelectedPhotos, setHasSelectedPhotos] = useState(false)
+
+  // Check for selected photos in localStorage
+  useEffect(() => {
+    const checkSelectedPhotos = () => {
+      if (typeof window === 'undefined') return
+      
+      try {
+        // Check all localStorage keys that match the pattern 'selected-photos-*'
+        let hasSelections = false
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i)
+          if (key && key.startsWith('selected-photos-')) {
+            const value = localStorage.getItem(key)
+            if (value) {
+              try {
+                const ids = JSON.parse(value) as number[]
+                if (ids && ids.length > 0) {
+                  hasSelections = true
+                  break
+                }
+              } catch (e) {
+                // Invalid JSON, skip
+              }
+            }
+          }
+        }
+        setHasSelectedPhotos(hasSelections)
+      } catch (error) {
+        console.error('Error checking selected photos:', error)
+      }
+    }
+
+    // Check on mount
+    checkSelectedPhotos()
+
+    // Listen for custom event from PhotosGrid
+    const handleSelectionChange = (event: CustomEvent) => {
+      setHasSelectedPhotos(event.detail.hasSelections)
+    }
+
+    // Listen for storage events (when localStorage changes in other tabs/windows)
+    window.addEventListener('storage', checkSelectedPhotos)
+    
+    // Listen for custom photo selection events
+    window.addEventListener('photoSelectionChanged', handleSelectionChange as EventListener)
+
+    // Also check periodically (in case changes happen in same tab)
+    const interval = setInterval(checkSelectedPhotos, 500)
+
+    return () => {
+      window.removeEventListener('storage', checkSelectedPhotos)
+      window.removeEventListener('photoSelectionChanged', handleSelectionChange as EventListener)
+      clearInterval(interval)
+    }
+  }, [])
+
+  return (
+    <>
+      {!hasSelectedPhotos && (
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 md:bottom-8 z-50 flex gap-3">
+          <motion.button
+            onClick={() => setIsDownloadModalOpen(true)}
+            className="rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4AF37] hover:bg-[#B8941F] text-white flex items-center gap-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Download className="h-5 w-5 flex-shrink-0" />
+            <span className="font-semibold whitespace-nowrap text-sm sm:text-base" style={{ fontFamily: 'var(--font-cormorant)' }}>
+              How to Download
+            </span>
+          </motion.button>
+          
+          <motion.button
+            onClick={() => setIsUploadModalOpen(true)}
+            className="rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4A017] hover:bg-[#caa113] text-white flex items-center gap-2"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Sparkles className="h-5 w-5 flex-shrink-0" />
+            <span className="font-semibold whitespace-nowrap text-sm sm:text-base" style={{ fontFamily: 'var(--font-cormorant)' }}>
+              Upload Yours
+            </span>
+            <Upload className="h-5 w-5 flex-shrink-0" />
+          </motion.button>
+        </div>
+      )}
+      
+      <AnimatePresence>
+        {isUploadModalOpen && (
+          <UploadModal
+            isOpen={isUploadModalOpen}
+            onClose={() => setIsUploadModalOpen(false)}
+            functions={functions}
+            onUploadComplete={onUploadComplete}
+          />
+        )}
+      </AnimatePresence>
+
+      <AnimatePresence>
+        {isDownloadModalOpen && (
+          <HowToDownloadModal
+            isOpen={isDownloadModalOpen}
+            onClose={() => setIsDownloadModalOpen(false)}
+          />
+        )}
+      </AnimatePresence>
+    </>
+  )
+}

@@ -1,26 +1,20 @@
 {
-  "name": "aabhas-kavita-wedding",
-  "version": "0.1.0",
+  "name": "aabhas-kavita-wedding-gallery",
+  "version": "1.0.0",
   "private": true,
+  "description": "Wedding gallery application with frontend and backend",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "eslint"
-  },
-  "dependencies": {
-    "next": "16.0.4",
-    "react": "19.2.0",
-    "react-dom": "19.2.0"
-  },
-  "devDependencies": {
-    "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
-    "eslint-config-next": "16.0.4",
-    "tailwindcss": "^4",
-    "typescript": "^5"
+    "dev:frontend": "cd aabhas_kavita_wedding_gallery_frontend && npm run dev",
+    "dev:backend": "cd aabhas_kavita_wedding_gallery_backend && npm run dev",
+    "build:frontend": "cd aabhas_kavita_wedding_gallery_frontend && npm run build",
+    "build:backend": "cd aabhas_kavita_wedding_gallery_backend && npm run build",
+    "install:frontend": "cd aabhas_kavita_wedding_gallery_frontend && npm install",
+    "install:backend": "cd aabhas_kavita_wedding_gallery_backend && npm install",
+    "install:all": "npm run install:frontend && npm run install:backend",
+    "db:generate": "cd aabhas_kavita_wedding_gallery_backend && npm run db:generate",
+    "db:migrate": "cd aabhas_kavita_wedding_gallery_backend && npm run db:migrate",
+    "db:seed": "cd aabhas_kavita_wedding_gallery_backend && npm run db:seed",
+    "db:studio": "cd aabhas_kavita_wedding_gallery_backend && npm run db:studio"
   }
 }
+

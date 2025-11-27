@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+:root {
+  /* Premium Wedding Color Palette */
+  --gold: #D4AF37;
+  --gold-light: #E8D5A3;
+  --gold-dark: #B8941F;
+  --ivory: #FFFEF7;
+  --ivory-warm: #FDF8F0;
+  --pink-soft: #F5E6E0;
+  --pink-rose: #E8C5B8;
+  --pink-deep: #D4A5A5;
+  --background: #FFFEF7;
+  --foreground: #2C2C2C;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-wedding: var(--font-playfair);
+  --font-elegant: var(--font-cormorant);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Glass Morphism Utility */
+.glass {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Premium Gradient Backgrounds */
+.gradient-gold {
+  background: linear-gradient(135deg, #D4AF37 0%, #E8D5A3 50%, #F5E6E0 100%);
+}
+
+.gradient-wedding {
+  background: linear-gradient(135deg, #FFFEF7 0%, #F5E6E0 25%, #E8C5B8 50%, #FDF8F0 75%, #FFFEF7 100%);
+}
+
+.gradient-ivory-pink {
+  background: linear-gradient(135deg, #FFFEF7 0%, #F5E6E0 50%, #E8C5B8 100%);
+}
+
+/* Hide scrollbar but keep scrolling functionality */
+.scrollbar-hide {
+  -ms-overflow-style: none !important;  /* IE and Edge */
+  scrollbar-width: none !important;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;  /* Chrome, Safari and Opera */
+}
+
+.scrollbar-hide::-webkit-scrollbar-track {
+  display: none !important;
+}
+
+.scrollbar-hide::-webkit-scrollbar-thumb {
+  display: none !important;
+}

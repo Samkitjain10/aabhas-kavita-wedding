@@ -1,0 +1,17 @@
+DATABASE BACKUP INSTRUCTIONS
+============================
+
+To create a MySQL database backup, run:
+
+mysqldump -u root wedding_gallery > wedding_gallery_backup.sql
+
+Or with password:
+mysqldump -u root -p wedding_gallery > wedding_gallery_backup.sql
+
+To restore:
+mysql -u root wedding_gallery < wedding_gallery_backup.sql
+
+The prisma folder contains:
+- schema.prisma: Database schema definition
+- migrations/: Database migration files
+- seed.ts: Database seeding script
