@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { X, Download, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { DownloadProgress } from '@/components/download-progress'
+import { FloatingUploadButton } from '@/components/floating-upload-button'
 import { motion } from 'framer-motion'
 
 interface Media {
@@ -18,6 +19,11 @@ interface Media {
     id: number
     name: string
   }
+}
+
+interface Function {
+  id: number
+  name: string
 }
 
 export default function GalleryPage() {
@@ -34,6 +40,18 @@ export default function GalleryPage() {
   const [currentFileName, setCurrentFileName] = useState<string>('')
   const [touchStart, setTouchStart] = useState<number | null>(null)
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
+  const [functions, setFunctions] = useState<Function[]>([])
+
+  const fetchFunctions = useCallback(async () => {
+    try {
+      const response = await fetch('/api/functions')
+      if (!response.ok) throw new Error('Failed to fetch functions')
+      const data = await response.json()
+      setFunctions(data.functions || [])
+    } catch (error) {
+      console.error('Error fetching functions:', error)
+    }
+  }, [])
 
   const fetchMedia = useCallback(async (id: number) => {
     try {
@@ -50,6 +68,10 @@ export default function GalleryPage() {
       router.push('/')
     }
   }, [router])
+
+  useEffect(() => {
+    fetchFunctions()
+  }, [fetchFunctions])
 
   useEffect(() => {
     if (!mediaId) {
@@ -451,6 +473,13 @@ export default function GalleryPage() {
           </div>
         </div>
       </div>
+      
+      <FloatingUploadButton 
+        functions={functions} 
+        onUploadComplete={() => {
+          router.refresh()
+        }} 
+      />
     </div>
   )
 }

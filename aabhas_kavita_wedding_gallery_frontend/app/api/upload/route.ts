@@ -81,11 +81,30 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (!Array.isArray(functionIds) || functionIds.length === 0) {
+    if (!Array.isArray(functionIds)) {
       return NextResponse.json(
-        { message: 'Invalid functions: must be a non-empty array' },
+        { message: 'Invalid functions: must be an array' },
         { status: 400 }
       )
+    }
+
+    // If no function is selected, use "Other" function
+    if (functionIds.length === 0) {
+      // Find or create "Other" function
+      let otherFunction = await prisma.function.findUnique({
+        where: { name: 'Other' },
+      })
+      
+      if (!otherFunction) {
+        otherFunction = await prisma.function.create({
+          data: {
+            name: 'Other',
+            description: 'Miscellaneous photos and videos',
+          },
+        })
+      }
+      
+      functionIds = [otherFunction.id]
     }
 
     // Require R2 - no local storage fallback

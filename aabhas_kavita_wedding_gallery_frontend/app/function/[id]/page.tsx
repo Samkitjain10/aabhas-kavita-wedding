@@ -57,9 +57,9 @@ export default async function FunctionPage({
   ]
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative">
       <div
-        className="absolute inset-0 pointer-events-none"
+        className="fixed inset-0 pointer-events-none"
         style={{
           backgroundImage: 'url("/Aabhas and Kavita wedding logo.png")',
           backgroundSize: '50% auto',
@@ -71,19 +71,24 @@ export default async function FunctionPage({
         }}
       ></div>
 
-      <div className="absolute inset-0 gradient-wedding"></div>
+      <div className="fixed inset-0 gradient-wedding pointer-events-none"></div>
 
-      <div className="relative z-10 container mx-auto px-4 pt-6 pb-12">
-        <div className="mb-12">
+      <div className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-[#D4AF37]/20 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-[#D4AF37] hover:text-[#B8941F] font-medium mb-6 transition-colors group"
+            className="inline-flex items-center gap-2 text-[#D4AF37] hover:text-[#B8941F] font-medium transition-colors group"
           >
             <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
             <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem' }}>
               Back to Home
             </span>
           </Link>
+        </div>
+      </div>
+
+      <div className="relative z-10 container mx-auto px-4 pt-6 pb-12">
+        <div className="mb-12">
           <h1
             className="text-5xl md:text-6xl font-bold mb-4 pb-4"
             style={{

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { Upload, Sparkles, Download } from 'lucide-react'
 import { UploadModal } from './upload-modal'
 import { HowToDownloadModal } from './how-to-download-modal'
@@ -19,12 +20,53 @@ interface FloatingUploadButtonProps {
 export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUploadButtonProps) {
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
-  const [hasSelectedPhotos, setHasSelectedPhotos] = useState(false)
+  const [hasSelectedPhotos, setHasSelectedPhotos] = useState(false) // Start as false so buttons show by default
+  const pathname = usePathname()
+
+  // Clear selections when on function page or home page
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+
+    // On home page, function page, or gallery page, clear all selections
+    const isHomePage = pathname === '/'
+    const isFunctionPage = /^\/function\/\d+$/.test(pathname)
+    const isGalleryPage = pathname === '/gallery' || pathname.startsWith('/gallery?')
+    
+    if (isHomePage || isFunctionPage || isGalleryPage) {
+      // Clear all selected photos from localStorage
+      try {
+        const keysToRemove: string[] = []
+        for (let i = 0; i < localStorage.length; i++) {
+          const key = localStorage.key(i)
+          if (key && key.startsWith('selected-photos-')) {
+            keysToRemove.push(key)
+          }
+        }
+        keysToRemove.forEach(key => localStorage.removeItem(key))
+        setHasSelectedPhotos(false)
+      } catch (error) {
+        console.error('Error clearing selected photos:', error)
+        setHasSelectedPhotos(false)
+      }
+    }
+  }, [pathname])
 
   // Check for selected photos in localStorage
   useEffect(() => {
     const checkSelectedPhotos = () => {
       if (typeof window === 'undefined') return
+      
+      const currentPath = pathname || window.location.pathname
+      
+      // On home page, function page, or gallery page, always show buttons
+      const isHomePage = currentPath === '/' || currentPath === ''
+      const isFunctionPage = /^\/function\/\d+$/.test(currentPath)
+      const isGalleryPage = currentPath === '/gallery' || currentPath.startsWith('/gallery?')
+      
+      if (isHomePage || isFunctionPage || isGalleryPage) {
+        setHasSelectedPhotos(false)
+        return
+      }
       
       try {
         // Check all localStorage keys that match the pattern 'selected-photos-*'
@@ -33,22 +75,31 @@ export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUp
           const key = localStorage.key(i)
           if (key && key.startsWith('selected-photos-')) {
             const value = localStorage.getItem(key)
-            if (value) {
+            if (value && value !== '[]' && value !== 'null') {
               try {
                 const ids = JSON.parse(value) as number[]
-                if (ids && ids.length > 0) {
+                if (Array.isArray(ids) && ids.length > 0) {
                   hasSelections = true
                   break
+                } else {
+                  // Clean up empty or invalid entries
+                  localStorage.removeItem(key)
                 }
               } catch (e) {
-                // Invalid JSON, skip
+                // Invalid JSON, remove it
+                localStorage.removeItem(key)
               }
+            } else {
+              // Empty array or null, remove it
+              localStorage.removeItem(key)
             }
           }
         }
         setHasSelectedPhotos(hasSelections)
       } catch (error) {
         console.error('Error checking selected photos:', error)
+        // On error, default to showing buttons
+        setHasSelectedPhotos(false)
       }
     }
 
@@ -57,7 +108,9 @@ export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUp
 
     // Listen for custom event from PhotosGrid
     const handleSelectionChange = (event: CustomEvent) => {
-      setHasSelectedPhotos(event.detail.hasSelections)
+      if (event.detail && typeof event.detail.hasSelections === 'boolean') {
+        setHasSelectedPhotos(event.detail.hasSelections)
+      }
     }
 
     // Listen for storage events (when localStorage changes in other tabs/windows)
@@ -74,15 +127,15 @@ export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUp
       window.removeEventListener('photoSelectionChanged', handleSelectionChange as EventListener)
       clearInterval(interval)
     }
-  }, [])
+  }, [pathname])
 
   return (
     <>
       {!hasSelectedPhotos && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 md:bottom-8 z-50 flex gap-3">
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 md:bottom-8 z-[100] flex gap-3">
           <motion.button
             onClick={() => setIsDownloadModalOpen(true)}
-            className="rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4AF37] hover:bg-[#B8941F] text-white flex items-center gap-2"
+            className="rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4AF37] hover:bg-[#B8941F] text-white flex items-center gap-2 z-[100]"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -94,7 +147,7 @@ export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUp
           
           <motion.button
             onClick={() => setIsUploadModalOpen(true)}
-            className="rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4A017] hover:bg-[#caa113] text-white flex items-center gap-2"
+            className="rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4A017] hover:bg-[#caa113] text-white flex items-center gap-2 z-[100]"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >

@@ -217,10 +217,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
       setError('Please select at least one file')
       return
     }
-    if (selectedFunctions.length === 0) {
-      setError('Please select a function')
-      return
-    }
+    // Function selection is now optional - if none selected, will use "Other"
     
     // Validate that we have ready files
     const readyFiles = files.filter(f => f.status === 'ready' || f.status === 'uploading' || f.status === 'complete')
@@ -248,7 +245,8 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
 
         const formData = new FormData()
         formData.append('file', fileToUpload, fileToUpload.name)
-        formData.append('functions', JSON.stringify(selectedFunctions))
+        // Send empty array if no function selected - API will use "Other"
+        formData.append('functions', JSON.stringify(selectedFunctions.length > 0 ? selectedFunctions : []))
         formData.append('type', isImage ? 'photo' : 'video')
         formData.append('originalSize', fileWithPreview.originalSize.toString())
 
@@ -300,20 +298,20 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
   }
 
   const readyFiles = files.filter(f => f.status === 'ready' || f.status === 'uploading' || f.status === 'complete')
-  const canUpload = readyFiles.length > 0 && selectedFunctions.length > 0 && !uploading
+  const canUpload = readyFiles.length > 0 && !uploading
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Upload Your Memories" size="2xl">
       <div className="flex flex-col max-h-[70vh]">
         <div className="space-y-6 overflow-y-auto flex-1 pb-4 scrollbar-hide">
         {/* Function Selection */}
-        <div>
-          <label 
-            className="block text-sm font-medium mb-3"
-            style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', color: '#2C2C2C' }}
-          >
-            Select Function
-          </label>
+                <div>
+                  <label 
+                    className="block text-sm font-medium mb-3"
+                    style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', color: '#2C2C2C' }}
+                  >
+                    Select Function <span className="text-gray-400 text-xs">(Optional - will use "Other" if none selected)</span>
+                  </label>
           <div className="grid grid-cols-2 gap-3 pl-2">
             {functions.map((func) => (
               <motion.button

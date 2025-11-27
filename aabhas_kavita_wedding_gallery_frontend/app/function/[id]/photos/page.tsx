@@ -6,7 +6,7 @@ import { getSession } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 import { ArrowLeft, Camera } from 'lucide-react'
 import { FunctionPageClient } from '@/components/function-page-client'
-import { PhotosGrid } from '@/components/photos-grid'
+import { PhotosPageClient } from '@/components/photos-page-client'
 
 export default async function FunctionPhotosPage({
   params,
@@ -42,19 +42,25 @@ export default async function FunctionPhotosPage({
   const totalCount = functionData.media.length
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none bg-[url('/Aabhas and Kavita wedding logo.png')] bg-center bg-no-repeat bg-fixed opacity-5"></div>
-      <div className="absolute inset-0 gradient-wedding"></div>
+    <div className="min-h-screen relative">
+      <div className="fixed inset-0 pointer-events-none bg-[url('/Aabhas and Kavita wedding logo.png')] bg-center bg-no-repeat bg-fixed opacity-5"></div>
+      <div className="fixed inset-0 gradient-wedding pointer-events-none"></div>
 
-      <div className="relative z-10 container mx-auto px-4 py-10">
-        <Link
-          href={`/function/${functionId}`}
-          className="inline-flex items-center gap-2 text-[#D4AF37] hover:text-[#B8941F] font-medium mb-6 transition-colors group"
-        >
-          <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
-          <span className="text-sm tracking-wide uppercase">Back to {functionData.name}</span>
-        </Link>
+      <div className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-[#D4AF37]/20 shadow-sm">
+        <div className="container mx-auto px-4 py-3">
+          <Link
+            href={`/function/${functionId}`}
+            className="inline-flex items-center gap-2 text-[#D4AF37] hover:text-[#B8941F] font-medium transition-colors group"
+          >
+            <ArrowLeft className="h-5 w-5 group-hover:-translate-x-1 transition-transform" />
+            <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem' }}>
+              Back to {functionData.name}
+            </span>
+          </Link>
+        </div>
+      </div>
 
+      <div className="relative z-10 container mx-auto px-4 pt-6 pb-12">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-8">
           <div className="flex items-center gap-6">
             <div className="w-24 h-24 rounded-full bg-gradient-to-br from-[#D4AF37] to-[#B8941F] shadow-lg flex items-center justify-center">
@@ -84,17 +90,15 @@ export default async function FunctionPhotosPage({
 
         <div className="h-px bg-white/60 mb-8"></div>
 
-        <div className="mb-12 md:mb-0">
-          <PhotosGrid 
-            functionId={functionId}
-            photos={photos.map(p => ({
-              id: p.id,
-              url: p.url,
-              originalUrl: p.originalUrl || undefined,
-              fileName: p.fileName,
-            }))} 
-          />
-        </div>
+        <PhotosPageClient 
+          functionId={functionId}
+          photos={photos.map(p => ({
+            id: p.id,
+            url: p.url,
+            originalUrl: p.originalUrl || undefined,
+            fileName: p.fileName,
+          }))}
+        />
       </div>
 
       <FunctionPageClient functions={allFunctions} />

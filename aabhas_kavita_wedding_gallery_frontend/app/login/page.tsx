@@ -61,19 +61,19 @@ export default function LoginPage() {
         className="relative z-10 max-w-md w-full"
       >
         <div 
-          className="glass-strong rounded-3xl p-10 shadow-2xl"
+          className="glass-strong rounded-3xl p-8 md:p-10 shadow-2xl overflow-visible"
           style={{
             background: 'rgba(255, 255, 255, 0.5)',
             backdropFilter: 'blur(20px)',
             border: '1px solid rgba(212, 175, 55, 0.3)',
           }}
         >
-          <div className="text-center mb-8">
-            <div className="flex justify-center mb-4">
+          <div className="text-center mb-8 overflow-visible">
+            <div className="flex justify-center mb-6">
               <Sparkles className="h-8 w-8 text-[#D4AF37] animate-pulse" />
             </div>
             <h1 
-              className="text-4xl md:text-5xl font-bold mb-3"
+              className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-6 whitespace-nowrap"
               style={{ 
                 fontFamily: 'var(--font-playfair)',
                 background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)',
@@ -84,7 +84,7 @@ export default function LoginPage() {
             >
               Aabhas & Kavita
             </h1>
-            <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="flex items-center justify-center gap-2 mb-6">
               <Heart className="h-5 w-5 text-[#D4A5A5] fill-[#D4A5A5]" />
               <h2 
                 className="text-2xl font-semibold"
@@ -98,17 +98,17 @@ export default function LoginPage() {
               <Heart className="h-5 w-5 text-[#D4A5A5] fill-[#D4A5A5]" />
             </div>
             <p 
-              className="text-gray-600"
+              className="text-gray-600 mb-8"
               style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem' }}
             >
               Enter your phone number to continue
             </p>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             <div>
               <label 
                 htmlFor="phone" 
-                className="block text-sm font-medium mb-3"
+                className="block text-sm font-medium mb-2"
                 style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', color: '#2C2C2C' }}
               >
                 Phone Number
@@ -118,7 +118,7 @@ export default function LoginPage() {
                 type="tel"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
-                placeholder="9413078947 or +919413078947"
+                placeholder="9413078947"
                 required
                 className="w-full px-5 py-4 rounded-xl border-2 border-[#D4AF37]/30 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all bg-white/80 backdrop-blur-sm"
                 style={{ fontFamily: 'var(--font-geist-sans), system-ui, sans-serif', fontSize: '1.1rem', letterSpacing: '0.5px' }}

@@ -7,9 +7,30 @@ import { Sparkles, Heart } from 'lucide-react'
 
 async function getFunctions() {
   try {
-    return await prisma.function.findMany({
+    let functions = await prisma.function.findMany({
       orderBy: { createdAt: 'asc' },
     })
+
+    // Ensure "Other" function exists
+    let otherFunction = functions.find(f => f.name === 'Other')
+    if (!otherFunction) {
+      otherFunction = await prisma.function.create({
+        data: {
+          name: 'Other',
+          description: 'Miscellaneous photos and videos',
+        },
+      })
+      functions.push(otherFunction)
+    }
+
+    // Sort functions so "Other" appears last
+    functions = functions.sort((a, b) => {
+      if (a.name === 'Other') return 1
+      if (b.name === 'Other') return -1
+      return a.createdAt.getTime() - b.createdAt.getTime()
+    })
+
+    return functions
   } catch (error) {
     console.error('Error fetching functions:', error)
     return []
@@ -57,7 +78,9 @@ export default async function HomePage() {
               backgroundClip: 'text',
             }}
           >
-            Aabhas & Kavita
+            <span className="block md:inline">Aabhas</span>
+            <span className="block md:inline md:mx-2"> & </span>
+            <span className="block md:inline">Kavita</span>
           </h1>
           <div className="flex items-center justify-center gap-3 mb-6">
             <Heart className="h-6 w-6 text-[#D4A5A5] fill-[#D4A5A5]" />

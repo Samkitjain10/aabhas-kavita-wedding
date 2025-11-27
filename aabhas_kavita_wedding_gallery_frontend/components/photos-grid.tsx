@@ -18,13 +18,22 @@ interface Photo {
 interface PhotosGridProps {
   functionId: number
   photos: Photo[]
+  isSelectionMode?: boolean
+  onSelectionModeChange?: (enabled: boolean) => void
 }
 
-export function PhotosGrid({ functionId, photos }: PhotosGridProps) {
+export function PhotosGrid({ functionId, photos, isSelectionMode = false, onSelectionModeChange }: PhotosGridProps) {
   const storageKey = `selected-photos-${functionId}`
   
   // Always start with empty Set to avoid hydration mismatch
   const [selectedPhotos, setSelectedPhotos] = useState<Set<number>>(new Set())
+  
+  // Clear selections when selection mode is turned off
+  useEffect(() => {
+    if (!isSelectionMode && selectedPhotos.size > 0) {
+      setSelectedPhotos(new Set())
+    }
+  }, [isSelectionMode])
   
   // Load selections from localStorage only after mount (client-side only)
   useEffect(() => {
@@ -237,44 +246,44 @@ export function PhotosGrid({ functionId, photos }: PhotosGridProps) {
         fileName={currentFileName}
       />
 
-      <AnimatePresence>
-        {selectedPhotos.size > 0 && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#D4AF37]/20 px-5 py-3 flex items-center gap-5 max-w-[95vw]"
-          >
-            <div className="flex items-center gap-4">
-              <span className="text-base font-semibold text-gray-900" style={{ fontFamily: 'var(--font-cormorant)' }}>
-                {selectedPhotos.size} of {Math.min(15, photos.length)} selected
-              </span>
-              {selectedPhotos.size > 0 && (
-                <button
-                  onClick={clearSelection}
-                  className="text-[#D4AF37] hover:text-[#B8941F] text-sm font-medium transition-colors" style={{ fontFamily: 'var(--font-cormorant)' }}
-                >
-                  Clear
-                </button>
-              )}
-            </div>
-            <Button
-              onClick={handleDownload}
-              disabled={downloading}
-              className="bg-[#D4AF37] hover:bg-[#B8941F] text-white rounded-full px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 whitespace-nowrap"
-              style={{ fontFamily: 'var(--font-cormorant)' }}
-            >
-              <Download className="h-5 w-5 flex-shrink-0" />
-              <span className="text-sm font-semibold">
-                {downloading 
-                  ? 'Downloading...' 
-                  : `Download ${selectedPhotos.size} Photo${selectedPhotos.size > 1 ? 's' : ''}`
-                }
-              </span>
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+             <AnimatePresence>
+               {isSelectionMode && selectedPhotos.size > 0 && (
+                 <motion.div
+                   initial={{ opacity: 0, y: 20 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   exit={{ opacity: 0, y: 20 }}
+                   className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#D4AF37]/20 px-5 py-3 flex items-center gap-5 max-w-[95vw]"
+                 >
+                   <div className="flex items-center gap-4">
+                     <span className="text-base font-semibold text-gray-900" style={{ fontFamily: 'var(--font-cormorant)' }}>
+                       {selectedPhotos.size} of {Math.min(15, photos.length)} selected
+                     </span>
+                     {selectedPhotos.size > 0 && (
+                       <button
+                         onClick={clearSelection}
+                         className="text-[#D4AF37] hover:text-[#B8941F] text-sm font-medium transition-colors" style={{ fontFamily: 'var(--font-cormorant)' }}
+                       >
+                         Clear
+                       </button>
+                     )}
+                   </div>
+                   <Button
+                     onClick={handleDownload}
+                     disabled={downloading}
+                     className="bg-[#D4AF37] hover:bg-[#B8941F] text-white rounded-full px-5 py-2.5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2 whitespace-nowrap"
+                     style={{ fontFamily: 'var(--font-cormorant)' }}
+                   >
+                     <Download className="h-5 w-5 flex-shrink-0" />
+                     <span className="text-sm font-semibold">
+                       {downloading 
+                         ? 'Downloading...' 
+                         : `Download ${selectedPhotos.size} Photo${selectedPhotos.size > 1 ? 's' : ''}`
+                       }
+                     </span>
+                   </Button>
+                 </motion.div>
+               )}
+             </AnimatePresence>
 
       <div className="grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-2">
         {photos.map((photo, index) => {
@@ -283,35 +292,54 @@ export function PhotosGrid({ functionId, photos }: PhotosGridProps) {
           const isAboveFold = index < 6
           return (
             <div key={photo.id} className="relative aspect-square overflow-hidden rounded-lg group">
-              <button
-                onClick={(e) => {
-                  e.preventDefault()
-                  e.stopPropagation()
-                  toggleSelection(photo.id)
-                }}
-                className="absolute top-2 left-2 z-10 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg hover:bg-white transition-colors"
-                aria-label={isSelected ? 'Deselect' : 'Select'}
-              >
-                {isSelected ? (
-                  <CheckCircle2 className="h-5 w-5 text-[#D4AF37] fill-[#D4AF37]" />
-                ) : (
-                  <div className="h-5 w-5 border-2 border-gray-400 rounded-full" />
-                )}
-              </button>
-              <Link
-                href={`/gallery?media=${photo.id}`}
-                className="block w-full h-full"
-              >
-                <Image
-                  src={photo.url}
-                  alt={photo.fileName}
-                  width={600}
-                  height={600}
-                  className="w-full h-full object-cover"
-                  loading={isAboveFold ? "eager" : "lazy"}
-                  unoptimized
-                />
-              </Link>
+              {isSelectionMode && (
+                <button
+                  onClick={(e) => {
+                    e.preventDefault()
+                    e.stopPropagation()
+                    toggleSelection(photo.id)
+                  }}
+                  className={`absolute top-2 left-2 z-10 rounded-full p-1.5 transition-all ${
+                    isSelected
+                      ? 'bg-[#D4AF37] text-white'
+                      : 'bg-white/90 text-gray-400 hover:bg-white'
+                  }`}
+                  aria-label={isSelected ? 'Deselect photo' : 'Select photo'}
+                >
+                  <CheckCircle2 className={`h-5 w-5 ${isSelected ? 'fill-current' : ''}`} />
+                </button>
+              )}
+              {isSelectionMode ? (
+                <div
+                  onClick={() => toggleSelection(photo.id)}
+                  className="block w-full h-full cursor-pointer"
+                >
+                  <Image
+                    src={photo.url}
+                    alt={photo.fileName}
+                    width={600}
+                    height={600}
+                    className="w-full h-full object-cover"
+                    loading={isAboveFold ? "eager" : "lazy"}
+                    unoptimized
+                  />
+                </div>
+              ) : (
+                <Link
+                  href={`/gallery?media=${photo.id}`}
+                  className="block w-full h-full"
+                >
+                  <Image
+                    src={photo.url}
+                    alt={photo.fileName}
+                    width={600}
+                    height={600}
+                    className="w-full h-full object-cover"
+                    loading={isAboveFold ? "eager" : "lazy"}
+                    unoptimized
+                  />
+                </Link>
+              )}
             </div>
           )
         })}

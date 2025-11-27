@@ -206,11 +206,11 @@ export function HowToDownloadModal({ isOpen, onClose }: HowToDownloadModalProps)
                     {/* Instructions */}
                     <div>
                       <h3 
-                        className="text-xl md:text-2xl font-semibold mb-5 md:mb-6"
+                        className={`text-xl md:text-2xl mb-5 md:mb-6 ${language === 'english' ? 'font-bold' : 'font-semibold'}`}
                         style={{ 
                           fontFamily: 'var(--font-playfair)', 
                           color: '#1a1a1a',
-                          fontWeight: 600,
+                          fontWeight: language === 'english' ? 700 : 600,
                           fontSize: '24px',
                         }}
                       >
@@ -225,26 +225,58 @@ export function HowToDownloadModal({ isOpen, onClose }: HowToDownloadModalProps)
                             exit={{ opacity: 0, y: -10 }}
                             transition={{ duration: 0.2 }}
                           >
-                            {currentInstructions.map((instruction, index) => (
-                              <div
-                                key={index}
-                                className="flex items-start gap-3"
-                                style={{ 
-                                  fontFamily: 'var(--font-cormorant)',
-                                  fontSize: '17px',
-                                  lineHeight: '1.6',
-                                  paddingLeft: '12px',
-                                }}
-                              >
-                                <span 
-                                  className="text-[#D4AF37] font-semibold flex-shrink-0"
-                                  style={{ opacity: 0.6 }}
+                            {currentInstructions.map((instruction, index) => {
+                              // Function to render text with English words in bold
+                              const renderInstruction = (text: string) => {
+                                if (language === 'english') {
+                                  return <span className="font-bold">{text}</span>
+                                }
+                                
+                                // For Hindi, detect and bold English words/phrases
+                                // Match English words, phrases in quotes, or common English terms
+                                const parts = text.split(/(['"]?[A-Za-z][A-Za-z\s/]*['"]?)/g)
+                                
+                                return (
+                                  <>
+                                    {parts.map((part, i) => {
+                                      // Check if part contains English letters
+                                      const hasEnglish = /[A-Za-z]/.test(part)
+                                      if (hasEnglish && part.trim().length > 0) {
+                                        return (
+                                          <span key={i} className="font-bold">
+                                            {part}
+                                          </span>
+                                        )
+                                      }
+                                      return <span key={i}>{part}</span>
+                                    })}
+                                  </>
+                                )
+                              }
+                              
+                              return (
+                                <div
+                                  key={index}
+                                  className="flex items-start gap-3"
+                                  style={{ 
+                                    fontFamily: 'var(--font-cormorant)',
+                                    fontSize: '17px',
+                                    lineHeight: '1.6',
+                                    paddingLeft: '12px',
+                                  }}
                                 >
-                                  {index + 1}.
-                                </span>
-                                <span className="text-gray-700 flex-1">{instruction}</span>
-                              </div>
-                            ))}
+                                  <span 
+                                    className="text-[#D4AF37] font-semibold flex-shrink-0"
+                                    style={{ opacity: 0.6 }}
+                                  >
+                                    {index + 1}.
+                                  </span>
+                                  <span className="text-gray-700 flex-1">
+                                    {renderInstruction(instruction)}
+                                  </span>
+                                </div>
+                              )
+                            })}
                           </motion.div>
                         </AnimatePresence>
                       </div>
@@ -253,11 +285,11 @@ export function HowToDownloadModal({ isOpen, onClose }: HowToDownloadModalProps)
                     {/* YouTube Video */}
                     <div>
                       <h3 
-                        className="text-xl md:text-2xl font-semibold mb-4 md:mb-5"
+                        className={`text-xl md:text-2xl mb-4 md:mb-5 ${language === 'english' ? 'font-bold' : 'font-semibold'}`}
                         style={{ 
                           fontFamily: 'var(--font-playfair)', 
                           color: '#1a1a1a',
-                          fontWeight: 600,
+                          fontWeight: language === 'english' ? 700 : 600,
                           fontSize: '24px',
                         }}
                       >
