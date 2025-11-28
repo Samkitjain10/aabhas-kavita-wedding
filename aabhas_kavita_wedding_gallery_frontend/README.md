@@ -1,4 +1,4 @@
-# Aabhas & Kavita Wedding Gallery - Frontend
+# Ankita & Sahil Wedding Gallery - Frontend
 
 This is the frontend application for the wedding gallery.
 

@@ -16,6 +16,11 @@ const nextConfig: NextConfig = {
   },
   // Hide the Next.js development indicator
   devIndicators: false,
+  // Disable error overlay in development
+  onDemandEntries: {
+    maxInactiveAge: 25 * 1000,
+    pagesBufferLength: 2,
+  },
   // Allow larger file uploads (up to 100MB)
   experimental: {
     serverActions: {
@@ -24,6 +29,8 @@ const nextConfig: NextConfig = {
     // Increase body size limit for API routes (default is 10MB)
     proxyClientMaxBodySize: '100mb',
   },
+  // Turbopack configuration (Next.js 16 uses Turbopack by default)
+  turbopack: {},
 };
 
 export default nextConfig;

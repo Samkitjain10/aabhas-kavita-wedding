@@ -252,7 +252,10 @@ export function PhotosGrid({ functionId, photos, isSelectionMode = false, onSele
                    initial={{ opacity: 0, y: 20 }}
                    animate={{ opacity: 1, y: 0 }}
                    exit={{ opacity: 0, y: 20 }}
-                   className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#D4AF37]/20 px-5 py-3 flex items-center gap-5 max-w-[95vw]"
+                   className="fixed left-1/2 -translate-x-1/2 z-50 bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#D4AF37]/20 px-5 py-3 flex items-center gap-5 max-w-[95vw]"
+                  style={{
+                    bottom: `calc(1.5rem + env(safe-area-inset-bottom))`,
+                  }}
                  >
                    <div className="flex items-center gap-4">
                      <span className="text-base font-semibold text-gray-900" style={{ fontFamily: 'var(--font-cormorant)' }}>

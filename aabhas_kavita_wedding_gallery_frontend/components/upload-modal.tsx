@@ -45,15 +45,67 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
     )
   }
 
+  const convertHeicToJpeg = async (file: File): Promise<File> => {
+    // Only run in browser
+    if (typeof window === 'undefined') {
+      throw new Error('HEIC conversion can only be performed in the browser')
+    }
+
+    // Check if file is already in a browser-readable format
+    const browserReadableTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp']
+    if (browserReadableTypes.includes(file.type.toLowerCase())) {
+      // File is already browser-readable, return as-is
+      return file
+    }
+
+    try {
+      // Dynamic import to avoid SSR issues
+      const heic2any = (await import('heic2any')).default
+      
+      const convertedBlob = await heic2any({
+        blob: file,
+        toType: 'image/jpeg',
+        quality: 0.92,
+      })
+      
+      // heic2any returns an array, get the first item
+      const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob
+      
+      // Create a new File object with JPEG extension
+      const fileName = file.name.replace(/\.(heic|heif)$/i, '.jpg')
+      return new File([blob], fileName, {
+        type: 'image/jpeg',
+        lastModified: file.lastModified,
+      })
+    } catch (error: any) {
+      // If heic2any says the image is already browser-readable, return original file
+      if (error?.message?.includes('already browser readable') || error?.code === 1) {
+        return file
+      }
+      console.error('HEIC conversion error:', error)
+      // Return original file instead of throwing error
+      return file
+    }
+  }
+
   const compressImage = async (file: File): Promise<File> => {
+    // Check if file is HEIC by extension only (more reliable than MIME type)
+    const isHeic = file.name.toLowerCase().endsWith('.heic') || 
+                   file.name.toLowerCase().endsWith('.heif')
+    
+    let fileToCompress = file
+    if (isHeic) {
+      fileToCompress = await convertHeicToJpeg(file)
+    }
+
     const options = {
       maxSizeMB: 5, // Increased for better quality
       maxWidthOrHeight: 2560, // Higher resolution for best quality
       useWebWorker: true,
-      fileType: file.type,
+      fileType: fileToCompress.type,
       initialQuality: 0.92, // High quality compression
     }
-    return await imageCompression(file, options)
+    return await imageCompression(fileToCompress, options)
   }
 
   const compressVideo = async (
@@ -61,11 +113,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
     onProgress?: (progress: number) => void
   ): Promise<File> => {
     try {
-      const compressed = await compressVideoFile(file, {
-        maxSizeMB: 10,
-        maxWidthOrHeight: 1080,
-        onProgress,
-      })
+      const compressed = await compressVideoFile(file, onProgress)
       return compressed
     } catch (error) {
       console.error('Video compression error:', error)
@@ -81,7 +129,10 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
 
     for (let i = 0; i < selectedFiles.length; i++) {
       const file = selectedFiles[i]
-      const isImage = file.type.startsWith('image/')
+      // Check for HEIC files by extension only (more reliable than MIME type)
+      const isHeic = file.name.toLowerCase().endsWith('.heic') || 
+                     file.name.toLowerCase().endsWith('.heif')
+      const isImage = file.type.startsWith('image/') || isHeic
       const isVideo = file.type.startsWith('video/')
 
       if (!isImage && !isVideo) continue
@@ -97,13 +148,35 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
 
       // Create preview for images and videos
       if (isImage) {
-        const reader = new FileReader()
-        reader.onload = (e) => {
-          setFiles(prev => prev.map(f => 
-            f.file === file ? { ...f, preview: e.target?.result as string } : f
-          ))
+        // Handle HEIC files - convert to JPEG for preview
+        if (isHeic) {
+          convertHeicToJpeg(file).then(convertedFile => {
+            const reader = new FileReader()
+            reader.onload = (e) => {
+              setFiles(prev => prev.map(f => 
+                f.file === file ? { ...f, preview: e.target?.result as string } : f
+              ))
+            }
+            reader.readAsDataURL(convertedFile)
+          }).catch(() => {
+            // If conversion fails, try to read original file as data URL
+            const reader = new FileReader()
+            reader.onload = (e) => {
+              setFiles(prev => prev.map(f => 
+                f.file === file ? { ...f, preview: e.target?.result as string } : f
+              ))
+            }
+            reader.readAsDataURL(file)
+          })
+        } else {
+          const reader = new FileReader()
+          reader.onload = (e) => {
+            setFiles(prev => prev.map(f => 
+              f.file === file ? { ...f, preview: e.target?.result as string } : f
+            ))
+          }
+          reader.readAsDataURL(file)
         }
-        reader.readAsDataURL(file)
       } else if (isVideo) {
         // Create video preview thumbnail
         const video = document.createElement('video')
@@ -155,34 +228,18 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
           ))
         }
       } else if (fileWithPreview.type === 'video') {
+        // Videos are uploaded as-is (no compression)
+        // R2 can handle large files, and client-side compression is unreliable
         setFiles(prev => prev.map(f => 
-          f.file === fileWithPreview.file ? { ...f, status: 'compressing' } : f
+          f.file === fileWithPreview.file 
+            ? { 
+                ...f, 
+                status: 'ready',
+                compressedSize: fileWithPreview.originalSize,
+                progress: 100
+              }
+            : f
         ))
-
-        try {
-          // Update progress during compression
-          let compressionProgress = 0
-          const compressed = await compressVideo(fileWithPreview.file, (progress) => {
-            compressionProgress = progress
-            setFiles(prev => prev.map(f => 
-              f.file === fileWithPreview.file ? { ...f, progress: compressionProgress } : f
-            ))
-          })
-          
-          setFiles(prev => prev.map(f => 
-            f.file === fileWithPreview.file 
-              ? { ...f, compressed, compressedSize: compressed.size, status: 'ready', progress: 100 }
-              : f
-          ))
-        } catch (err) {
-          console.error('Video compression error:', err)
-          // If compression fails, use original file
-          setFiles(prev => prev.map(f => 
-            f.file === fileWithPreview.file 
-              ? { ...f, status: 'ready' }
-              : f
-          ))
-        }
       }
     }
   }, [])
@@ -302,35 +359,34 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title="Upload Your Memories" size="2xl">
-      <div className="flex flex-col max-h-[70vh]">
-        <div className="space-y-6 overflow-y-auto flex-1 pb-4 scrollbar-hide">
+      <div className="flex flex-col max-h-[70vh] sm:max-h-[75vh]">
+        <div className="space-y-4 sm:space-y-6 overflow-y-auto flex-1 pb-4 scrollbar-hide">
         {/* Function Selection */}
-                <div>
-                  <label 
-                    className="block text-sm font-medium mb-3"
-                    style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', color: '#2C2C2C' }}
-                  >
-                    Select Function <span className="text-gray-400 text-xs">(Optional - will use "Other" if none selected)</span>
-                  </label>
-          <div className="grid grid-cols-2 gap-3 pl-2">
+        <div>
+          <label 
+            className="block text-sm font-medium mb-3 px-1"
+            style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1rem', color: '#2C2C2C' }}
+          >
+            Select Function <span className="text-gray-400 text-xs block sm:inline">(Optional - will use "Other" if none selected)</span>
+          </label>
+          <div className="grid grid-cols-2 gap-2 sm:gap-3 px-1 sm:pl-2">
             {functions.map((func) => (
               <motion.button
                 key={func.id}
                 onClick={() => toggleFunction(func.id)}
                 disabled={uploading}
-                whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`px-6 py-3 rounded-full text-base font-semibold transition-all min-w-[140px] flex items-center justify-center gap-2 ${
+                className={`px-3 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all flex items-center justify-center gap-1 sm:gap-2 ${
                   selectedFunctions.includes(func.id)
                     ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8941F] text-white shadow-lg'
-                    : 'glass text-gray-700 hover:bg-white/50'
+                    : 'bg-white/60 backdrop-blur-sm border border-[#D4AF37]/30 text-gray-700 hover:bg-[#D4AF37]/20 hover:border-[#B8941F]/50'
                 } ${uploading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 style={{ fontFamily: 'var(--font-cormorant)', fontWeight: 600 }}
               >
                 {selectedFunctions.includes(func.id) && (
-                  <CheckCircle2 className="inline h-4 w-4 mr-2" />
+                  <CheckCircle2 className="inline h-3 w-3 sm:h-4 sm:w-4 sm:mr-2" />
                 )}
-                {func.name}
+                <span className="truncate">{func.name}</span>
               </motion.button>
             ))}
           </div>
@@ -339,8 +395,8 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
         {/* File Upload Area */}
         <div>
           <label 
-            className="block text-sm font-medium mb-3"
-            style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem', color: '#2C2C2C' }}
+            className="block text-sm font-medium mb-3 px-1"
+            style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1rem', color: '#2C2C2C' }}
           >
             Upload Photos or Videos (Multiple)
           </label>
@@ -348,30 +404,30 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
             onDrop={handleDrop}
             onDragOver={handleDragOver}
             onClick={() => !uploading && fileInputRef.current?.click()}
-            className="mt-1 flex justify-center px-6 pt-12 pb-12 border-2 border-dashed rounded-2xl hover:border-[#D4AF37] transition-colors glass cursor-pointer"
+            className="mt-1 flex justify-center px-4 sm:px-6 pt-8 sm:pt-12 pb-8 sm:pb-12 border-2 border-dashed rounded-xl sm:rounded-2xl hover:border-[#D4AF37] transition-colors glass cursor-pointer"
           >
-            <div className="space-y-4 text-center w-full">
+            <div className="space-y-3 sm:space-y-4 text-center w-full">
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               >
-                <Upload className="mx-auto h-16 w-16 text-[#D4AF37]" />
+                <Upload className="mx-auto h-12 w-12 sm:h-16 sm:w-16 text-[#D4AF37]" />
               </motion.div>
-              <div className="flex text-sm text-gray-600 justify-center items-center gap-2 flex-wrap">
-                <span className="font-medium text-[#D4AF37]" style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem' }}>
+              <div className="flex text-xs sm:text-sm text-gray-600 justify-center items-center gap-1 sm:gap-2 flex-wrap px-2">
+                <span className="font-medium text-[#D4AF37]" style={{ fontFamily: 'var(--font-cormorant)', fontSize: '0.95rem' }}>
                   Upload files
                 </span>
-                <span style={{ fontFamily: 'var(--font-cormorant)' }}>or drag and drop</span>
+                <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '0.95rem' }}>or drag and drop</span>
               </div>
-              <p className="text-xs text-gray-500" style={{ fontFamily: 'var(--font-cormorant)' }}>
-                PNG, JPG, GIF, MP4, MOV up to 100MB each
+              <p className="text-xs text-gray-500 px-2" style={{ fontFamily: 'var(--font-cormorant)' }}>
+                PNG, JPG, GIF, HEIC, MP4, MOV up to 100MB each
               </p>
             </div>
             <input
               ref={fileInputRef}
               type="file"
               className="hidden"
-              accept="image/*,video/*"
+              accept="image/*,video/*,.heic,.heif"
               multiple
               onChange={handleFileInputChange}
               disabled={uploading}
@@ -400,7 +456,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 20 }}
-                  className="glass rounded-xl p-4 flex items-center gap-4"
+                  className="glass rounded-xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4"
                 >
                   {/* Preview */}
                   <div className="flex-shrink-0 relative">
@@ -408,20 +464,20 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
                       <img
                         src={fileWithPreview.preview}
                         alt={fileWithPreview.file.name}
-                        className="w-16 h-16 object-cover rounded-lg"
+                        className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg"
                       />
                     ) : (
-                      <div className="w-16 h-16 bg-gradient-to-br from-[#D4AF37] to-[#B8941F] rounded-lg flex items-center justify-center">
+                      <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#D4AF37] to-[#B8941F] rounded-lg flex items-center justify-center">
                         {fileWithPreview.type === 'image' ? (
-                          <ImageIcon className="h-8 w-8 text-white" />
+                          <ImageIcon className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                         ) : (
-                          <Video className="h-8 w-8 text-white" />
+                          <Video className="h-6 w-6 sm:h-8 sm:w-8 text-white" />
                         )}
                       </div>
                     )}
                     {fileWithPreview.type === 'video' && fileWithPreview.preview && (
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <Video className="h-6 w-6 text-white drop-shadow-lg" />
+                        <Video className="h-4 w-4 sm:h-6 sm:w-6 text-white drop-shadow-lg" />
                       </div>
                     )}
                   </div>
@@ -429,19 +485,13 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
                   {/* File Info */}
                   <div className="flex-1 min-w-0">
                     <p 
-                      className="text-sm font-medium text-gray-900 truncate"
+                      className="text-xs sm:text-sm font-medium text-gray-900 truncate"
                       style={{ fontFamily: 'var(--font-cormorant)' }}
                     >
                       {fileWithPreview.file.name}
                     </p>
-                    <div className="flex items-center gap-4 mt-1 text-xs text-gray-600">
-                      <span>Original: {formatFileSize(fileWithPreview.originalSize)}</span>
-                      {fileWithPreview.compressedSize > 0 && (
-                        <span className="text-[#D4AF37]">
-                          Compressed: {formatFileSize(fileWithPreview.compressedSize)} 
-                          ({Math.round((1 - fileWithPreview.compressedSize / fileWithPreview.originalSize) * 100)}% smaller)
-                        </span>
-                      )}
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs text-gray-600">
+                      <span>Size: {formatFileSize(fileWithPreview.originalSize)}</span>
                     </div>
                     {fileWithPreview.status === 'compressing' && (
                       <div className="mt-2">
@@ -548,12 +598,12 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
         </div>
 
         {/* Fixed Actions at Bottom */}
-        <div className="flex justify-end gap-3 pt-4 mt-4 border-t border-gray-200 bg-white/70 backdrop-blur-sm -mx-8 md:-mx-10 px-8 md:px-10 pb-0 flex-shrink-0">
+        <div className="flex flex-col sm:flex-row justify-start gap-2 sm:gap-3 pt-4 mt-4 border-t border-gray-200 bg-white/70 backdrop-blur-sm -mx-4 sm:-mx-8 md:-mx-10 px-4 sm:px-8 md:px-10 pb-0 flex-shrink-0">
           <Button
             variant="outline"
             onClick={onClose}
             disabled={uploading}
-            className="rounded-xl"
+            className="rounded-xl w-full sm:w-auto"
             style={{ fontFamily: 'var(--font-cormorant)' }}
           >
             Cancel
@@ -561,7 +611,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
           <Button
             onClick={handleUpload}
             disabled={!canUpload}
-            className="rounded-xl px-8 transition-colors"
+            className="rounded-xl px-6 sm:px-8 transition-colors w-full sm:w-auto text-sm sm:text-base"
             style={{
               background: canUpload ? 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)' : '#ccc',
               color: 'white',

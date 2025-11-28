@@ -1,6 +1,21 @@
 {
   "node": {
-    "40035316ee34b06c403a7ff7dab63de46975642738": {
+    "4029b26855b8d75c0c3f7fd660f4912539fcc3a2ce": {
+      "workers": {
+        "app/function/[id]/videos/page": {
+          "moduleId": "[project]/aabhas_kavita_wedding_gallery_frontend/.next-internal/server/app/function/[id]/videos/page/actions.js { ACTIONS_MODULE0 => \"[project]/aabhas_kavita_wedding_gallery_frontend/app/function/[id]/videos/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "default",
+          "filename": "aabhas_kavita_wedding_gallery_frontend/app/function/[id]/videos/page.tsx"
+        }
+      },
+      "layer": {
+        "app/function/[id]/videos/page": "rsc"
+      },
+      "filename": "aabhas_kavita_wedding_gallery_frontend/app/function/[id]/videos/page.tsx",
+      "exportedName": "default"
+    },
+    "40946ea46e96fbffa673a27fb9c2dc45803984f025": {
       "workers": {
         "app/function/[id]/photos/page": {
           "moduleId": "[project]/aabhas_kavita_wedding_gallery_frontend/.next-internal/server/app/function/[id]/photos/page/actions.js { ACTIONS_MODULE0 => \"[project]/aabhas_kavita_wedding_gallery_frontend/app/function/[id]/photos/page.tsx [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
@@ -17,5 +32,5 @@
     }
   },
   "edge": {},
-  "encryptionKey": "N/ZD265I2IuNMQpRy5hZEKitu2kPRKiMt04U6AXfGQA="
+  "encryptionKey": "W+yuDM9Hei8aHZXtusKjAvDk9Li9NoJvF9wepmOZG34="
 }

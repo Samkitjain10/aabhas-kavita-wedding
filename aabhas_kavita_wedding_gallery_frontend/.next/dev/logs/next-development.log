@@ -1,7 +1,61 @@
-[00:00:00.771] Server  LOG      ✓ Ready in 577ms
-[00:00:04.670] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:04.695] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:02:03.825] Server  LOG      ✓ Compiled in 77ms
-[00:05:17.375] Server  LOG      ✓ Compiled in 102ms
-[00:05:21.792] Server  LOG      ✓ Compiled in 22ms
-[00:05:32.567] Server  LOG      ✓ Compiled in 22ms
+[00:00:03.073] Server  LOG      ✓ Ready in 2.7s
+[00:00:06.529] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:06.545] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:07.007] Server  ERROR    ⨯ ReferenceError: window is not defined
+[00:00:07.014] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:07.220] Server  ERROR    ⨯ ReferenceError: window is not defined
+[00:00:07.229] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:07.297] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:07.523] Server  ERROR    ⨯ ReferenceError: window is not defined
+[00:00:07.531] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:07.940] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.969] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:28.065] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:28.083] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:28.647] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:00:43.528] Server  LOG      ✓ Compiled in 152ms
+[00:00:53.224] Server  LOG      ✓ Compiled in 287ms
+[00:01:07.871] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
+Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
+[00:01:08.536] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:01:47.960] Server  LOG      ✓ Compiled in 19ms
+[00:02:09.541] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:32.498] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:02.987] Server  LOG      ✓ Compiled in 63ms
+[00:09:03.480] Server  LOG      ✓ Compiled in 151ms
+[00:12:30.140] Browser ERROR   Failed to load FFmpeg: Error: Cannot find module as expression is too dynamic
+[00:12:30.140] Browser ERROR   Video compression failed: {}
+[00:14:38.757] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
+[00:14:38.757] Browser ERROR   HEIC preview conversion error: {}
+[00:14:38.757] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
+[00:14:38.757] Browser ERROR   HEIC preview conversion error: {}
+[00:14:38.757] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
+[00:14:39.017] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
+[00:14:39.017] Browser ERROR   HEIC conversion error: {"code":2,"message":"ERR_LIBHEIF format not supported"}
+[00:14:39.018] Browser ERROR   HEIC preview conversion error: {}
+[00:14:39.253] Browser ERROR   HEIC conversion error: {"code":2,"message":"ERR_LIBHEIF format not supported"}
+[00:15:19.817] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:27.881] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
+[00:15:27.881] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
+[00:15:27.881] Browser ERROR   HEIC preview conversion error: {}
+[00:16:48.510] Server  LOG      ✓ Compiled in 0ms
+[00:16:54.778] Server  LOG      ✓ Compiled in 34ms
+[00:18:54.045] Server  LOG      ✓ Compiled in 47ms
+[00:20:05.850] Server  LOG      ✓ Compiled in 86ms
+[00:20:09.942] Server  LOG      ✓ Compiled in 25ms
+[00:20:13.722] Server  LOG      ✓ Compiled in 27ms
+[00:20:21.449] Server  LOG      ✓ Compiled in 35ms
+[00:20:42.535] Browser ERROR   HEIC conversion error: {"code":2,"message":"ERR_LIBHEIF format not supported"}
+[00:20:42.535] Browser ERROR   HEIC conversion error: {"code":2,"message":"ERR_LIBHEIF format not supported"}
+[00:21:02.836] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:22:35.635] Server  WARN     ⚠ Cross origin request detected from 2c820884f940.ngrok-free.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
+Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins

@@ -316,7 +316,7 @@ export default function GalleryPage() {
 
   if (loading || !media) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-white">
+      <div className="min-h-[100dvh] flex items-center justify-center bg-white">
         <div className="text-gray-600">Loading...</div>
       </div>
     )
@@ -448,18 +448,31 @@ export default function GalleryPage() {
           </div>
 
           <div className="bg-white/80 border-t sm:border-t-0 sm:border-l border-white/60 p-4 sm:p-6 flex flex-col gap-4 flex-shrink-0">
-            <div className="text-xs uppercase tracking-wide text-gray-500">
-              {media.function.name}
+            {/* Mobile: Heading and Download button on same line */}
+            <div className="flex flex-row items-center justify-between gap-2 sm:flex-col sm:items-start sm:gap-0">
+              <div className="text-xs uppercase tracking-wide text-gray-500">
+                {media.function.name}
+              </div>
+              <Button
+                onClick={handleDownload}
+                disabled={downloading}
+                className="bg-[#D4AF37] hover:bg-[#B8941F] text-white rounded-full disabled:opacity-50 disabled:cursor-not-allowed touch-manipulation sm:hidden flex-shrink-0"
+                style={{ minHeight: '40px', minWidth: '40px', width: '40px', height: '40px', padding: '0' }}
+              >
+                <Download className="h-5 w-5" />
+              </Button>
             </div>
-            <div>
+            {/* File name */}
+            <div className="sm:block">
               <h3 className="text-base font-semibold text-gray-900 break-words">
                 {captionTitle}
               </h3>
             </div>
+            {/* Desktop: Download button with text */}
             <Button
               onClick={handleDownload}
               disabled={downloading}
-              className="bg-[#D4AF37] hover:bg-[#B8941F] text-white rounded-full w-full disabled:opacity-50 disabled:cursor-not-allowed py-3 sm:py-2 touch-manipulation"
+              className="hidden sm:flex bg-[#D4AF37] hover:bg-[#B8941F] text-white rounded-full w-full disabled:opacity-50 disabled:cursor-not-allowed py-2 touch-manipulation"
               style={{ minHeight: '48px' }}
             >
               <Download className="h-4 w-4 mr-2" />

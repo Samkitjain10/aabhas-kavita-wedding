@@ -64,11 +64,11 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
                   border: '1px solid rgba(212, 175, 55, 0.3)',
                 }}
               >
-                <div className="p-8 md:p-10">
+                <div className="p-4 sm:p-6 md:p-10">
                   {title && (
                     <Dialog.Title
                       as="h3"
-                      className="text-2xl md:text-3xl font-bold mb-6"
+                      className="text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 pr-8"
                       style={{ 
                         fontFamily: 'var(--font-playfair)',
                         background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)',
@@ -82,10 +82,10 @@ export function Modal({ isOpen, onClose, title, children, size = 'md' }: ModalPr
                   )}
                   <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 text-gray-400 hover:text-[#D4AF37] transition-colors z-10"
+                    className="absolute top-4 right-4 sm:top-6 sm:right-6 text-gray-400 hover:text-[#D4AF37] transition-colors z-10 p-1"
                     aria-label="Close"
                   >
-                    <XMarkIcon className="h-6 w-6" />
+                    <XMarkIcon className="h-5 w-5 sm:h-6 sm:w-6" />
                   </button>
                   {children}
                 </div>

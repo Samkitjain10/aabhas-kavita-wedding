@@ -25,7 +25,10 @@ export function DownloadProgress({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 20 }}
-          className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#D4AF37]/20 p-6 min-w-[320px] max-w-md"
+          className="fixed left-1/2 -translate-x-1/2 z-[60] bg-white/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#D4AF37]/20 p-6 min-w-[320px] max-w-md"
+          style={{
+            bottom: `calc(1.5rem + env(safe-area-inset-bottom))`,
+          }}
         >
           <div className="flex items-center gap-4 mb-4">
             <div className="flex-shrink-0">

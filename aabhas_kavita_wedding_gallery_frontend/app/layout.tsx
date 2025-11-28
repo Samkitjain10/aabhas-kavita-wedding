@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Playfair_Display, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
+import { HideErrorOverlay } from "@/components/hide-error-overlay";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,16 +26,25 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Aabhas and Kavita's Wedding Gallery",
+  title: "Ankita and Sahil's Wedding Gallery",
   description: "Share and view beautiful memories from our wedding",
   icons: {
     icon: [
-      { url: "/Aabhas and Kavita wedding logo.png", sizes: "any" },
+      { url: "/Ankita and Sahil wedding logo.png", sizes: "any" },
       { url: "/icon.png", sizes: "any" },
     ],
-    shortcut: "/Aabhas and Kavita wedding logo.png",
-    apple: "/Aabhas and Kavita wedding logo.png",
+    shortcut: "/Ankita and Sahil wedding logo.png",
+    apple: "/Ankita and Sahil wedding logo.png",
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  height: 'device-height',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
 };
 
 export default function RootLayout({
@@ -47,6 +57,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${cormorant.variable} antialiased`}
       >
+        <HideErrorOverlay />
         {children}
       </body>
     </html>

@@ -23,10 +23,27 @@
   --font-elegant: var(--font-cormorant);
 }
 
+html {
+  height: 100dvh;
+  overflow-x: hidden;
+  padding-bottom: env(safe-area-inset-bottom);
+  margin: 0;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+  min-height: 100dvh;
+  overflow-x: hidden;
+  position: relative;
+  padding-bottom: env(safe-area-inset-bottom);
+  margin: 0;
+}
+
+/* Prevent extra space on mobile */
+* {
+  box-sizing: border-box;
 }
 
 /* Glass Morphism Utility */
@@ -74,5 +91,36 @@ body {
 }
 
 .scrollbar-hide::-webkit-scrollbar-thumb {
+  display: none !important;
+}
+
+/* Safe viewport height for mobile browsers */
+.min-h-screen-safe {
+  min-height: 100dvh;
+}
+
+/* Hide Next.js error overlay and development indicators */
+#__next-build-watcher,
+#__next-dev-overlay,
+[data-nextjs-dialog],
+[data-nextjs-dialog-overlay],
+.next-error-overlay,
+iframe[src*="__nextjs"],
+div[id*="__nextjs"] {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  position: fixed !important;
+  z-index: -9999 !important;
+}
+
+/* Hide any error notification popups */
+[class*="error"],
+[class*="Error"],
+[class*="issue"],
+[class*="Issue"],
+[data-error],
+[data-issue] {
   display: none !important;
 }

@@ -1,4 +1,4 @@
-# Aabhas & Kavita Wedding Gallery - Backend
+# Ankita & Sahil Wedding Gallery - Backend
 
 This is the backend API server for the wedding gallery.
 

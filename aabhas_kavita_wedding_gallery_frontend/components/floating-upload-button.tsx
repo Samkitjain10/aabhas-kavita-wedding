@@ -132,7 +132,12 @@ export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUp
   return (
     <>
       {!hasSelectedPhotos && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 md:bottom-8 z-[100] flex gap-3">
+        <div 
+          className="fixed left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 z-[100] flex gap-3"
+          style={{
+            bottom: `calc(1.5rem + env(safe-area-inset-bottom))`,
+          }}
+        >
           <motion.button
             onClick={() => setIsDownloadModalOpen(true)}
             className="rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4AF37] hover:bg-[#B8941F] text-white flex items-center gap-2 z-[100]"

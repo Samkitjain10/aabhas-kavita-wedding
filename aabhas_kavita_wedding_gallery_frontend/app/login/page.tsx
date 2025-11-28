@@ -42,15 +42,17 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 relative overflow-hidden">
+    <div className="min-h-[100dvh] flex items-center justify-center px-4 relative overflow-hidden">
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className="fixed inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'url("/Aabhas and Kavita wedding logo.png")',
+          backgroundImage: 'url("/Ankita and Sahil wedding logo.png")',
           backgroundSize: '60% auto',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
+          backgroundAttachment: 'fixed',
           opacity: '0.05',
+          zIndex: 0,
         }}
       ></div>
       <div className="absolute inset-0 gradient-wedding"></div>
@@ -82,7 +84,7 @@ export default function LoginPage() {
                 backgroundClip: 'text',
               }}
             >
-              Aabhas & Kavita
+              Ankita & Sahil
             </h1>
             <div className="flex items-center justify-center gap-2 mb-6">
               <Heart className="h-5 w-5 text-[#D4A5A5] fill-[#D4A5A5]" />
@@ -104,7 +106,7 @@ export default function LoginPage() {
               Enter your phone number to continue
             </p>
           </div>
-          <form onSubmit={handleSubmit} className="space-y-5">
+          <form onSubmit={handleSubmit} className="space-y-5" suppressHydrationWarning>
             <div>
               <label 
                 htmlFor="phone" 
@@ -120,6 +122,7 @@ export default function LoginPage() {
                 onChange={(e) => setPhone(e.target.value)}
                 placeholder="9413078947"
                 required
+                suppressHydrationWarning
                 className="w-full px-5 py-4 rounded-xl border-2 border-[#D4AF37]/30 focus:border-[#D4AF37] focus:ring-2 focus:ring-[#D4AF37]/20 outline-none transition-all bg-white/80 backdrop-blur-sm"
                 style={{ fontFamily: 'var(--font-geist-sans), system-ui, sans-serif', fontSize: '1.1rem', letterSpacing: '0.5px' }}
               />

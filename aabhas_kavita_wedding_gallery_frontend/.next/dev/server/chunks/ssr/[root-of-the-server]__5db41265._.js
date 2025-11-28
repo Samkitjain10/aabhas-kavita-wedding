@@ -156,11 +156,29 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_galler
 ;
 async function getFunctions() {
     try {
-        return await __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].function.findMany({
+        let functions = await __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].function.findMany({
             orderBy: {
                 createdAt: 'asc'
             }
         });
+        // Ensure "Other" function exists
+        let otherFunction = functions.find((f)=>f.name === 'Other');
+        if (!otherFunction) {
+            otherFunction = await __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$lib$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].function.create({
+                data: {
+                    name: 'Other',
+                    description: 'Miscellaneous photos and videos'
+                }
+            });
+            functions.push(otherFunction);
+        }
+        // Sort functions so "Other" appears last
+        functions = functions.sort((a, b)=>{
+            if (a.name === 'Other') return 1;
+            if (b.name === 'Other') return -1;
+            return a.createdAt.getTime() - b.createdAt.getTime();
+        });
+        return functions;
     } catch (error) {
         console.error('Error fetching functions:', error);
         return [];
@@ -173,12 +191,12 @@ async function HomePage() {
     }
     const functions = await getFunctions();
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "min-h-screen relative overflow-hidden",
+        className: "min-h-[100dvh] relative overflow-hidden",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "absolute inset-0 pointer-events-none",
+                className: "fixed inset-0 pointer-events-none",
                 style: {
-                    backgroundImage: 'url("/Aabhas and Kavita wedding logo.png")',
+                    backgroundImage: 'url("/Ankita and Sahil wedding logo.png")',
                     backgroundSize: '50% auto',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -188,7 +206,7 @@ async function HomePage() {
                 }
             }, void 0, false, {
                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                lineNumber: 31,
+                lineNumber: 52,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -202,12 +220,12 @@ async function HomePage() {
                                 className: "h-8 w-8 text-[#D4AF37] animate-pulse"
                             }, void 0, false, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                lineNumber: 48,
+                                lineNumber: 69,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                            lineNumber: 47,
+                            lineNumber: 68,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -219,10 +237,35 @@ async function HomePage() {
                                 WebkitTextFillColor: 'transparent',
                                 backgroundClip: 'text'
                             },
-                            children: "Aabhas & Kavita"
-                        }, void 0, false, {
+                            children: [
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "block md:inline",
+                                    children: "Ankita"
+                                }, void 0, false, {
+                                    fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
+                                    lineNumber: 81,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "block md:inline md:mx-2",
+                                    children: " & "
+                                }, void 0, false, {
+                                    fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
+                                    lineNumber: 82,
+                                    columnNumber: 13
+                                }, this),
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                    className: "block md:inline",
+                                    children: "Sahil"
+                                }, void 0, false, {
+                                    fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
+                                    lineNumber: 83,
+                                    columnNumber: 13
+                                }, this)
+                            ]
+                        }, void 0, true, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                            lineNumber: 50,
+                            lineNumber: 71,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -232,7 +275,7 @@ async function HomePage() {
                                     className: "h-6 w-6 text-[#D4A5A5] fill-[#D4A5A5]"
                                 }, void 0, false, {
                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                    lineNumber: 63,
+                                    lineNumber: 86,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -243,20 +286,20 @@ async function HomePage() {
                                     children: "Our Wedding Gallery"
                                 }, void 0, false, {
                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                    lineNumber: 64,
+                                    lineNumber: 87,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$heart$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__$3c$export__default__as__Heart$3e$__["Heart"], {
                                     className: "h-6 w-6 text-[#D4A5A5] fill-[#D4A5A5]"
                                 }, void 0, false, {
                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                    lineNumber: 70,
+                                    lineNumber: 93,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                            lineNumber: 62,
+                            lineNumber: 85,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -267,18 +310,18 @@ async function HomePage() {
                             children: "Relive the beautiful moments from our special day"
                         }, void 0, false, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                            lineNumber: 72,
+                            lineNumber: 95,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                    lineNumber: 46,
+                    lineNumber: 67,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                lineNumber: 45,
+                lineNumber: 66,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("section", {
@@ -292,12 +335,12 @@ async function HomePage() {
                             children: "No functions available yet."
                         }, void 0, false, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                            lineNumber: 86,
+                            lineNumber: 109,
                             columnNumber: 15
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                        lineNumber: 85,
+                        lineNumber: 108,
                         columnNumber: 13
                     }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8",
@@ -325,7 +368,7 @@ async function HomePage() {
                                                         children: func.name
                                                     }, void 0, false, {
                                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                                        lineNumber: 106,
+                                                        lineNumber: 129,
                                                         columnNumber: 23
                                                     }, this),
                                                     func.description && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -337,18 +380,18 @@ async function HomePage() {
                                                         children: func.description
                                                     }, void 0, false, {
                                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                                        lineNumber: 116,
+                                                        lineNumber: 139,
                                                         columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                                lineNumber: 105,
+                                                lineNumber: 128,
                                                 columnNumber: 23
                                             }, this)
                                         }, void 0, false, {
                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                            lineNumber: 104,
+                                            lineNumber: 127,
                                             columnNumber: 21
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -362,7 +405,7 @@ async function HomePage() {
                                                     children: "View Gallery"
                                                 }, void 0, false, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                                    lineNumber: 126,
+                                                    lineNumber: 149,
                                                     columnNumber: 23
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("svg", {
@@ -377,57 +420,57 @@ async function HomePage() {
                                                         d: "M9 5l7 7-7 7"
                                                     }, void 0, false, {
                                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                                        lineNumber: 128,
+                                                        lineNumber: 151,
                                                         columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                                    lineNumber: 127,
+                                                    lineNumber: 150,
                                                     columnNumber: 23
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                            lineNumber: 125,
+                                            lineNumber: 148,
                                             columnNumber: 21
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                    lineNumber: 96,
+                                    lineNumber: 119,
                                     columnNumber: 19
                                 }, this)
                             }, func.id, false, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                                lineNumber: 91,
+                                lineNumber: 114,
                                 columnNumber: 17
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                        lineNumber: 89,
+                        lineNumber: 112,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                    lineNumber: 83,
+                    lineNumber: 106,
                     columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                lineNumber: 82,
+                lineNumber: 105,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$components$2f$home$2d$page$2d$client$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["HomePageClient"], {
                 functions: functions
             }, void 0, false, {
                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-                lineNumber: 139,
+                lineNumber: 162,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/app/page.tsx",
-        lineNumber: 29,
+        lineNumber: 50,
         columnNumber: 5
     }, this);
 }

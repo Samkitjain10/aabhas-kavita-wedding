@@ -78,11 +78,11 @@ function Modal({ isOpen, onClose, title, children, size = 'md' }) {
                                     border: '1px solid rgba(212, 175, 55, 0.3)'
                                 },
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "p-8 md:p-10",
+                                    className: "p-4 sm:p-6 md:p-10",
                                     children: [
                                         title && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$headlessui$2f$react$2f$dist$2f$components$2f$dialog$2f$dialog$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Dialog"].Title, {
                                             as: "h3",
-                                            className: "text-2xl md:text-3xl font-bold mb-6",
+                                            className: "text-xl sm:text-2xl md:text-3xl font-bold mb-4 sm:mb-6 pr-8",
                                             style: {
                                                 fontFamily: 'var(--font-playfair)',
                                                 background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)',
@@ -98,10 +98,10 @@ function Modal({ isOpen, onClose, title, children, size = 'md' }) {
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: onClose,
-                                            className: "absolute top-6 right-6 text-gray-400 hover:text-[#D4AF37] transition-colors z-10",
+                                            className: "absolute top-4 right-4 sm:top-6 sm:right-6 text-gray-400 hover:text-[#D4AF37] transition-colors z-10 p-1",
                                             "aria-label": "Close",
                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$heroicons$2f$react$2f$24$2f$outline$2f$esm$2f$XMarkIcon$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__XMarkIcon$3e$__["XMarkIcon"], {
-                                                className: "h-6 w-6"
+                                                className: "h-5 w-5 sm:h-6 sm:w-6"
                                             }, void 0, false, {
                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/ui/modal.tsx",
                                                 lineNumber: 88,
@@ -220,80 +220,22 @@ if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelper
 "[project]/aabhas_kavita_wedding_gallery_frontend/lib/video.ts [app-client] (ecmascript)", ((__turbopack_context__) => {
 "use strict";
 
-__turbopack_context__.s([
+/**
+ * Video compression function - currently disabled
+ * Videos are uploaded as-is to R2 storage which can handle large files.
+ * Client-side video compression was causing issues with FFmpeg and Turbopack.
+ * 
+ * If server-side compression is needed in the future, it should be implemented
+ * on the backend after upload.
+ */ __turbopack_context__.s([
     "compressVideo",
     ()=>compressVideo
 ]);
-var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$build$2f$polyfills$2f$process$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = /*#__PURE__*/ __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/next/dist/build/polyfills/process.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$ffmpeg$2f$ffmpeg$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$locals$3e$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/@ffmpeg/ffmpeg/dist/esm/index.js [app-client] (ecmascript) <locals>");
-var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$ffmpeg$2f$ffmpeg$2f$dist$2f$esm$2f$classes$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/@ffmpeg/ffmpeg/dist/esm/classes.js [app-client] (ecmascript)");
-var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$ffmpeg$2f$util$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/@ffmpeg/util/dist/esm/index.js [app-client] (ecmascript)");
-;
-;
-let ffmpegInstance = null;
-let ffmpegLoaded = false;
-async function getFFmpeg() {
-    if (ffmpegInstance && ffmpegLoaded) {
-        return ffmpegInstance;
-    }
-    if (!ffmpegInstance) {
-        ffmpegInstance = new __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$ffmpeg$2f$ffmpeg$2f$dist$2f$esm$2f$classes$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FFmpeg"]();
-        // Only log in development
-        if ("TURBOPACK compile-time truthy", 1) {
-            ffmpegInstance.on('log', ({ message })=>{
-                console.log('FFmpeg:', message);
-            });
-        }
-    }
-    if (!ffmpegLoaded) {
-        const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/esm';
-        await ffmpegInstance.load({
-            coreURL: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$ffmpeg$2f$util$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFile"])(`${baseURL}/ffmpeg-core.js`),
-            wasmURL: await (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$ffmpeg$2f$util$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFile"])(`${baseURL}/ffmpeg-core.wasm`)
-        });
-        ffmpegLoaded = true;
-    }
-    return ffmpegInstance;
-}
 async function compressVideo(file, onProgress) {
-    const ffmpeg = await getFFmpeg();
-    const inputName = `input-${Date.now()}.mp4`;
-    const outputName = `output-${Date.now()}.mp4`;
-    await ffmpeg.writeFile(inputName, await (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f40$ffmpeg$2f$util$2f$dist$2f$esm$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["fetchFile"])(file));
-    onProgress?.(10);
-    await ffmpeg.exec([
-        '-i',
-        inputName,
-        '-vcodec',
-        'libx264',
-        '-crf',
-        '28',
-        '-preset',
-        'medium',
-        '-vf',
-        'scale=min(1080,iw):min(1080,ih):force_original_aspect_ratio=decrease',
-        '-c:a',
-        'aac',
-        '-b:a',
-        '128k',
-        outputName
-    ]);
-    onProgress?.(90);
-    const data = await ffmpeg.readFile(outputName);
-    await ffmpeg.deleteFile(inputName);
-    await ffmpeg.deleteFile(outputName);
+    // Skip compression - upload videos as-is
+    // R2 can handle large files, and client-side compression is unreliable
     onProgress?.(100);
-    const blob = new Blob([
-        data
-    ], {
-        type: 'video/mp4'
-    });
-    return new File([
-        blob
-    ], file.name.replace(/\.[^/.]+$/, '.mp4'), {
-        type: 'video/mp4',
-        lastModified: Date.now()
-    });
+    return file;
 }
 if (typeof globalThis.$RefreshHelpers$ === 'object' && globalThis.$RefreshHelpers !== null) {
     __turbopack_context__.k.registerExports(__turbopack_context__.m, globalThis.$RefreshHelpers$);
@@ -343,23 +285,69 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                 functionId
             ]);
     };
+    const convertHeicToJpeg = async (file)=>{
+        // Only run in browser
+        if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+        ;
+        // Check if file is already in a browser-readable format
+        const browserReadableTypes = [
+            'image/jpeg',
+            'image/jpg',
+            'image/png',
+            'image/gif',
+            'image/webp'
+        ];
+        if (browserReadableTypes.includes(file.type.toLowerCase())) {
+            // File is already browser-readable, return as-is
+            return file;
+        }
+        try {
+            // Dynamic import to avoid SSR issues
+            const heic2any = (await __turbopack_context__.A("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/heic2any/dist/heic2any.js [app-client] (ecmascript, async loader)")).default;
+            const convertedBlob = await heic2any({
+                blob: file,
+                toType: 'image/jpeg',
+                quality: 0.92
+            });
+            // heic2any returns an array, get the first item
+            const blob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
+            // Create a new File object with JPEG extension
+            const fileName = file.name.replace(/\.(heic|heif)$/i, '.jpg');
+            return new File([
+                blob
+            ], fileName, {
+                type: 'image/jpeg',
+                lastModified: file.lastModified
+            });
+        } catch (error) {
+            // If heic2any says the image is already browser-readable, return original file
+            if (error?.message?.includes('already browser readable') || error?.code === 1) {
+                return file;
+            }
+            console.error('HEIC conversion error:', error);
+            // Return original file instead of throwing error
+            return file;
+        }
+    };
     const compressImage = async (file)=>{
+        // Check if file is HEIC by extension only (more reliable than MIME type)
+        const isHeic = file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif');
+        let fileToCompress = file;
+        if (isHeic) {
+            fileToCompress = await convertHeicToJpeg(file);
+        }
         const options = {
             maxSizeMB: 5,
             maxWidthOrHeight: 2560,
             useWebWorker: true,
-            fileType: file.type,
+            fileType: fileToCompress.type,
             initialQuality: 0.92
         };
-        return await (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$browser$2d$image$2d$compression$2f$dist$2f$browser$2d$image$2d$compression$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(file, options);
+        return await (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$browser$2d$image$2d$compression$2f$dist$2f$browser$2d$image$2d$compression$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])(fileToCompress, options);
     };
     const compressVideo = async (file, onProgress)=>{
         try {
-            const compressed = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$lib$2f$video$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["compressVideo"])(file, {
-                maxSizeMB: 10,
-                maxWidthOrHeight: 1080,
-                onProgress
-            });
+            const compressed = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$lib$2f$video$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["compressVideo"])(file, onProgress);
             return compressed;
         } catch (error) {
             console.error('Video compression error:', error);
@@ -373,7 +361,9 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
             const newFiles = [];
             for(let i = 0; i < selectedFiles.length; i++){
                 const file = selectedFiles[i];
-                const isImage = file.type.startsWith('image/');
+                // Check for HEIC files by extension only (more reliable than MIME type)
+                const isHeic = file.name.toLowerCase().endsWith('.heic') || file.name.toLowerCase().endsWith('.heif');
+                const isImage = file.type.startsWith('image/') || isHeic;
                 const isVideo = file.type.startsWith('video/');
                 if (!isImage && !isVideo) continue;
                 const fileWithPreview = {
@@ -386,20 +376,60 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                 };
                 // Create preview for images and videos
                 if (isImage) {
-                    const reader = new FileReader();
-                    reader.onload = ({
-                        "UploadModal.useCallback[handleFilesChange]": (e)=>{
-                            setFiles({
-                                "UploadModal.useCallback[handleFilesChange]": (prev)=>prev.map({
-                                        "UploadModal.useCallback[handleFilesChange]": (f)=>f.file === file ? {
-                                                ...f,
-                                                preview: e.target?.result
-                                            } : f
-                                    }["UploadModal.useCallback[handleFilesChange]"])
-                            }["UploadModal.useCallback[handleFilesChange]"]);
-                        }
-                    })["UploadModal.useCallback[handleFilesChange]"];
-                    reader.readAsDataURL(file);
+                    // Handle HEIC files - convert to JPEG for preview
+                    if (isHeic) {
+                        convertHeicToJpeg(file).then({
+                            "UploadModal.useCallback[handleFilesChange]": (convertedFile)=>{
+                                const reader = new FileReader();
+                                reader.onload = ({
+                                    "UploadModal.useCallback[handleFilesChange]": (e)=>{
+                                        setFiles({
+                                            "UploadModal.useCallback[handleFilesChange]": (prev)=>prev.map({
+                                                    "UploadModal.useCallback[handleFilesChange]": (f)=>f.file === file ? {
+                                                            ...f,
+                                                            preview: e.target?.result
+                                                        } : f
+                                                }["UploadModal.useCallback[handleFilesChange]"])
+                                        }["UploadModal.useCallback[handleFilesChange]"]);
+                                    }
+                                })["UploadModal.useCallback[handleFilesChange]"];
+                                reader.readAsDataURL(convertedFile);
+                            }
+                        }["UploadModal.useCallback[handleFilesChange]"]).catch({
+                            "UploadModal.useCallback[handleFilesChange]": ()=>{
+                                // If conversion fails, try to read original file as data URL
+                                const reader = new FileReader();
+                                reader.onload = ({
+                                    "UploadModal.useCallback[handleFilesChange]": (e)=>{
+                                        setFiles({
+                                            "UploadModal.useCallback[handleFilesChange]": (prev)=>prev.map({
+                                                    "UploadModal.useCallback[handleFilesChange]": (f)=>f.file === file ? {
+                                                            ...f,
+                                                            preview: e.target?.result
+                                                        } : f
+                                                }["UploadModal.useCallback[handleFilesChange]"])
+                                        }["UploadModal.useCallback[handleFilesChange]"]);
+                                    }
+                                })["UploadModal.useCallback[handleFilesChange]"];
+                                reader.readAsDataURL(file);
+                            }
+                        }["UploadModal.useCallback[handleFilesChange]"]);
+                    } else {
+                        const reader = new FileReader();
+                        reader.onload = ({
+                            "UploadModal.useCallback[handleFilesChange]": (e)=>{
+                                setFiles({
+                                    "UploadModal.useCallback[handleFilesChange]": (prev)=>prev.map({
+                                            "UploadModal.useCallback[handleFilesChange]": (f)=>f.file === file ? {
+                                                    ...f,
+                                                    preview: e.target?.result
+                                                } : f
+                                        }["UploadModal.useCallback[handleFilesChange]"])
+                                }["UploadModal.useCallback[handleFilesChange]"]);
+                            }
+                        })["UploadModal.useCallback[handleFilesChange]"];
+                        reader.readAsDataURL(file);
+                    }
                 } else if (isVideo) {
                     // Create video preview thumbnail
                     const video = document.createElement('video');
@@ -474,53 +504,18 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                         }["UploadModal.useCallback[handleFilesChange]"]);
                     }
                 } else if (fileWithPreview.type === 'video') {
+                    // Videos are uploaded as-is (no compression)
+                    // R2 can handle large files, and client-side compression is unreliable
                     setFiles({
                         "UploadModal.useCallback[handleFilesChange]": (prev)=>prev.map({
                                 "UploadModal.useCallback[handleFilesChange]": (f)=>f.file === fileWithPreview.file ? {
                                         ...f,
-                                        status: 'compressing'
+                                        status: 'ready',
+                                        compressedSize: fileWithPreview.originalSize,
+                                        progress: 100
                                     } : f
                             }["UploadModal.useCallback[handleFilesChange]"])
                     }["UploadModal.useCallback[handleFilesChange]"]);
-                    try {
-                        // Update progress during compression
-                        let compressionProgress = 0;
-                        const compressed = await compressVideo(fileWithPreview.file, {
-                            "UploadModal.useCallback[handleFilesChange]": (progress)=>{
-                                compressionProgress = progress;
-                                setFiles({
-                                    "UploadModal.useCallback[handleFilesChange]": (prev)=>prev.map({
-                                            "UploadModal.useCallback[handleFilesChange]": (f)=>f.file === fileWithPreview.file ? {
-                                                    ...f,
-                                                    progress: compressionProgress
-                                                } : f
-                                        }["UploadModal.useCallback[handleFilesChange]"])
-                                }["UploadModal.useCallback[handleFilesChange]"]);
-                            }
-                        }["UploadModal.useCallback[handleFilesChange]"]);
-                        setFiles({
-                            "UploadModal.useCallback[handleFilesChange]": (prev)=>prev.map({
-                                    "UploadModal.useCallback[handleFilesChange]": (f)=>f.file === fileWithPreview.file ? {
-                                            ...f,
-                                            compressed,
-                                            compressedSize: compressed.size,
-                                            status: 'ready',
-                                            progress: 100
-                                        } : f
-                                }["UploadModal.useCallback[handleFilesChange]"])
-                        }["UploadModal.useCallback[handleFilesChange]"]);
-                    } catch (err) {
-                        console.error('Video compression error:', err);
-                        // If compression fails, use original file
-                        setFiles({
-                            "UploadModal.useCallback[handleFilesChange]": (prev)=>prev.map({
-                                    "UploadModal.useCallback[handleFilesChange]": (f)=>f.file === fileWithPreview.file ? {
-                                            ...f,
-                                            status: 'ready'
-                                        } : f
-                                }["UploadModal.useCallback[handleFilesChange]"])
-                        }["UploadModal.useCallback[handleFilesChange]"]);
-                    }
                 }
             }
         }
@@ -559,10 +554,7 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
             setError('Please select at least one file');
             return;
         }
-        if (selectedFunctions.length === 0) {
-            setError('Please select a function');
-            return;
-        }
+        // Function selection is now optional - if none selected, will use "Other"
         // Validate that we have ready files
         const readyFiles = files.filter((f)=>f.status === 'ready' || f.status === 'uploading' || f.status === 'complete');
         if (readyFiles.length === 0) {
@@ -585,7 +577,8 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                         } : f));
                 const formData = new FormData();
                 formData.append('file', fileToUpload, fileToUpload.name);
-                formData.append('functions', JSON.stringify(selectedFunctions));
+                // Send empty array if no function selected - API will use "Other"
+                formData.append('functions', JSON.stringify(selectedFunctions.length > 0 ? selectedFunctions : []));
                 formData.append('type', isImage ? 'photo' : 'video');
                 formData.append('originalSize', fileWithPreview.originalSize.toString());
                 // Use fetch API which handles FormData better with Next.js
@@ -634,98 +627,112 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
         }
     };
     const readyFiles = files.filter((f)=>f.status === 'ready' || f.status === 'uploading' || f.status === 'complete');
-    const canUpload = readyFiles.length > 0 && selectedFunctions.length > 0 && !uploading;
+    const canUpload = readyFiles.length > 0 && !uploading;
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$components$2f$ui$2f$modal$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Modal"], {
         isOpen: isOpen,
         onClose: onClose,
         title: "Upload Your Memories",
         size: "2xl",
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-            className: "flex flex-col max-h-[70vh]",
+            className: "flex flex-col max-h-[70vh] sm:max-h-[75vh]",
             children: [
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "space-y-6 overflow-y-auto flex-1 pb-4 scrollbar-hide",
+                    className: "space-y-4 sm:space-y-6 overflow-y-auto flex-1 pb-4 scrollbar-hide",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium mb-3",
+                                    className: "block text-sm font-medium mb-3 px-1",
                                     style: {
                                         fontFamily: 'var(--font-cormorant)',
-                                        fontSize: '1.1rem',
+                                        fontSize: '1rem',
                                         color: '#2C2C2C'
                                     },
-                                    children: "Select Function"
-                                }, void 0, false, {
+                                    children: [
+                                        "Select Function ",
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                            className: "text-gray-400 text-xs block sm:inline",
+                                            children: '(Optional - will use "Other" if none selected)'
+                                        }, void 0, false, {
+                                            fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
+                                            lineNumber: 370,
+                                            columnNumber: 29
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                    lineNumber: 311,
+                                    lineNumber: 366,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "grid grid-cols-2 gap-3 pl-2",
+                                    className: "grid grid-cols-2 gap-2 sm:gap-3 px-1 sm:pl-2",
                                     children: functions.map((func)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
                                             onClick: ()=>toggleFunction(func.id),
                                             disabled: uploading,
-                                            whileHover: {
-                                                scale: 1.05
-                                            },
                                             whileTap: {
                                                 scale: 0.95
                                             },
-                                            className: `px-6 py-3 rounded-full text-base font-semibold transition-all min-w-[140px] flex items-center justify-center gap-2 ${selectedFunctions.includes(func.id) ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8941F] text-white shadow-lg' : 'glass text-gray-700 hover:bg-white/50'} ${uploading ? 'opacity-50 cursor-not-allowed' : ''}`,
+                                            className: `px-3 sm:px-6 py-2.5 sm:py-3 rounded-full text-sm sm:text-base font-semibold transition-all flex items-center justify-center gap-1 sm:gap-2 ${selectedFunctions.includes(func.id) ? 'bg-gradient-to-r from-[#D4AF37] to-[#B8941F] text-white shadow-lg' : 'bg-white/60 backdrop-blur-sm border border-[#D4AF37]/30 text-gray-700 hover:bg-[#D4AF37]/20 hover:border-[#B8941F]/50'} ${uploading ? 'opacity-50 cursor-not-allowed' : ''}`,
                                             style: {
                                                 fontFamily: 'var(--font-cormorant)',
                                                 fontWeight: 600
                                             },
                                             children: [
                                                 selectedFunctions.includes(func.id) && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$circle$2d$check$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__CheckCircle2$3e$__["CheckCircle2"], {
-                                                    className: "inline h-4 w-4 mr-2"
+                                                    className: "inline h-3 w-3 sm:h-4 sm:w-4 sm:mr-2"
                                                 }, void 0, false, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                    lineNumber: 333,
+                                                    lineNumber: 387,
                                                     columnNumber: 19
                                                 }, this),
-                                                func.name
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "truncate",
+                                                    children: func.name
+                                                }, void 0, false, {
+                                                    fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
+                                                    lineNumber: 389,
+                                                    columnNumber: 17
+                                                }, this)
                                             ]
                                         }, func.id, true, {
                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                            lineNumber: 319,
+                                            lineNumber: 374,
                                             columnNumber: 15
                                         }, this))
                                 }, void 0, false, {
                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                    lineNumber: 317,
+                                    lineNumber: 372,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                            lineNumber: 310,
+                            lineNumber: 365,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             children: [
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
-                                    className: "block text-sm font-medium mb-3",
+                                    className: "block text-sm font-medium mb-3 px-1",
                                     style: {
                                         fontFamily: 'var(--font-cormorant)',
-                                        fontSize: '1.1rem',
+                                        fontSize: '1rem',
                                         color: '#2C2C2C'
                                     },
                                     children: "Upload Photos or Videos (Multiple)"
                                 }, void 0, false, {
                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                    lineNumber: 343,
+                                    lineNumber: 397,
                                     columnNumber: 11
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     onDrop: handleDrop,
                                     onDragOver: handleDragOver,
                                     onClick: ()=>!uploading && fileInputRef.current?.click(),
-                                    className: "mt-1 flex justify-center px-6 pt-12 pb-12 border-2 border-dashed rounded-2xl hover:border-[#D4AF37] transition-colors glass cursor-pointer",
+                                    className: "mt-1 flex justify-center px-4 sm:px-6 pt-8 sm:pt-12 pb-8 sm:pb-12 border-2 border-dashed rounded-xl sm:rounded-2xl hover:border-[#D4AF37] transition-colors glass cursor-pointer",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                            className: "space-y-4 text-center w-full",
+                                            className: "space-y-3 sm:space-y-4 text-center w-full",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
                                                     animate: {
@@ -740,88 +747,89 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                         repeat: Infinity
                                                     },
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__["Upload"], {
-                                                        className: "mx-auto h-16 w-16 text-[#D4AF37]"
+                                                        className: "mx-auto h-12 w-12 sm:h-16 sm:w-16 text-[#D4AF37]"
                                                     }, void 0, false, {
                                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                        lineNumber: 360,
+                                                        lineNumber: 414,
                                                         columnNumber: 17
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                    lineNumber: 356,
+                                                    lineNumber: 410,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                    className: "flex text-sm text-gray-600 justify-center items-center gap-2 flex-wrap",
+                                                    className: "flex text-xs sm:text-sm text-gray-600 justify-center items-center gap-1 sm:gap-2 flex-wrap px-2",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             className: "font-medium text-[#D4AF37]",
                                                             style: {
                                                                 fontFamily: 'var(--font-cormorant)',
-                                                                fontSize: '1.1rem'
+                                                                fontSize: '0.95rem'
                                                             },
                                                             children: "Upload files"
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 363,
+                                                            lineNumber: 417,
                                                             columnNumber: 17
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             style: {
-                                                                fontFamily: 'var(--font-cormorant)'
+                                                                fontFamily: 'var(--font-cormorant)',
+                                                                fontSize: '0.95rem'
                                                             },
                                                             children: "or drag and drop"
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 366,
+                                                            lineNumber: 420,
                                                             columnNumber: 17
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                    lineNumber: 362,
+                                                    lineNumber: 416,
                                                     columnNumber: 15
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                    className: "text-xs text-gray-500",
+                                                    className: "text-xs text-gray-500 px-2",
                                                     style: {
                                                         fontFamily: 'var(--font-cormorant)'
                                                     },
-                                                    children: "PNG, JPG, GIF, MP4, MOV up to 100MB each"
+                                                    children: "PNG, JPG, GIF, HEIC, MP4, MOV up to 100MB each"
                                                 }, void 0, false, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                    lineNumber: 368,
+                                                    lineNumber: 422,
                                                     columnNumber: 15
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                            lineNumber: 355,
+                                            lineNumber: 409,
                                             columnNumber: 13
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                             ref: fileInputRef,
                                             type: "file",
                                             className: "hidden",
-                                            accept: "image/*,video/*",
+                                            accept: "image/*,video/*,.heic,.heif",
                                             multiple: true,
                                             onChange: handleFileInputChange,
                                             disabled: uploading
                                         }, void 0, false, {
                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                            lineNumber: 372,
+                                            lineNumber: 426,
                                             columnNumber: 13
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                    lineNumber: 349,
+                                    lineNumber: 403,
                                     columnNumber: 11
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                            lineNumber: 342,
+                            lineNumber: 396,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -853,7 +861,7 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                        lineNumber: 393,
+                                        lineNumber: 447,
                                         columnNumber: 15
                                     }, this),
                                     files.map((fileWithPreview, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].div, {
@@ -869,7 +877,7 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                 opacity: 0,
                                                 x: 20
                                             },
-                                            className: "glass rounded-xl p-4 flex items-center gap-4",
+                                            className: "glass rounded-xl p-3 sm:p-4 flex items-center gap-3 sm:gap-4",
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex-shrink-0 relative",
@@ -877,96 +885,80 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                         fileWithPreview.preview ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                             src: fileWithPreview.preview,
                                                             alt: fileWithPreview.file.name,
-                                                            className: "w-16 h-16 object-cover rounded-lg"
+                                                            className: "w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg"
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 410,
+                                                            lineNumber: 464,
                                                             columnNumber: 23
                                                         }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "w-16 h-16 bg-gradient-to-br from-[#D4AF37] to-[#B8941F] rounded-lg flex items-center justify-center",
+                                                            className: "w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-[#D4AF37] to-[#B8941F] rounded-lg flex items-center justify-center",
                                                             children: fileWithPreview.type === 'image' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$image$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Image$3e$__["Image"], {
-                                                                className: "h-8 w-8 text-white"
+                                                                className: "h-6 w-6 sm:h-8 sm:w-8 text-white"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                lineNumber: 418,
+                                                                lineNumber: 472,
                                                                 columnNumber: 27
                                                             }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$video$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Video$3e$__["Video"], {
-                                                                className: "h-8 w-8 text-white"
+                                                                className: "h-6 w-6 sm:h-8 sm:w-8 text-white"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                lineNumber: 420,
+                                                                lineNumber: 474,
                                                                 columnNumber: 27
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 416,
+                                                            lineNumber: 470,
                                                             columnNumber: 23
                                                         }, this),
                                                         fileWithPreview.type === 'video' && fileWithPreview.preview && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "absolute inset-0 flex items-center justify-center",
                                                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$video$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Video$3e$__["Video"], {
-                                                                className: "h-6 w-6 text-white drop-shadow-lg"
+                                                                className: "h-4 w-4 sm:h-6 sm:w-6 text-white drop-shadow-lg"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                lineNumber: 426,
+                                                                lineNumber: 480,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 425,
+                                                            lineNumber: 479,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                    lineNumber: 408,
+                                                    lineNumber: 462,
                                                     columnNumber: 19
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "flex-1 min-w-0",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                            className: "text-sm font-medium text-gray-900 truncate",
+                                                            className: "text-xs sm:text-sm font-medium text-gray-900 truncate",
                                                             style: {
                                                                 fontFamily: 'var(--font-cormorant)'
                                                             },
                                                             children: fileWithPreview.file.name
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 433,
+                                                            lineNumber: 487,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                            className: "flex items-center gap-4 mt-1 text-xs text-gray-600",
-                                                            children: [
-                                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    children: [
-                                                                        "Original: ",
-                                                                        formatFileSize(fileWithPreview.originalSize)
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                    lineNumber: 440,
-                                                                    columnNumber: 23
-                                                                }, this),
-                                                                fileWithPreview.compressedSize > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                                    className: "text-[#D4AF37]",
-                                                                    children: [
-                                                                        "Compressed: ",
-                                                                        formatFileSize(fileWithPreview.compressedSize),
-                                                                        "(",
-                                                                        Math.round((1 - fileWithPreview.compressedSize / fileWithPreview.originalSize) * 100),
-                                                                        "% smaller)"
-                                                                    ]
-                                                                }, void 0, true, {
-                                                                    fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                    lineNumber: 442,
-                                                                    columnNumber: 25
-                                                                }, this)
-                                                            ]
-                                                        }, void 0, true, {
+                                                            className: "flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs text-gray-600",
+                                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                children: [
+                                                                    "Size: ",
+                                                                    formatFileSize(fileWithPreview.originalSize)
+                                                                ]
+                                                            }, void 0, true, {
+                                                                fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
+                                                                lineNumber: 494,
+                                                                columnNumber: 23
+                                                            }, this)
+                                                        }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 439,
+                                                            lineNumber: 493,
                                                             columnNumber: 21
                                                         }, this),
                                                         fileWithPreview.status === 'compressing' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -979,20 +971,20 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                                             className: "h-4 w-4 animate-pulse"
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                            lineNumber: 451,
+                                                                            lineNumber: 499,
                                                                             columnNumber: 27
                                                                         }, this),
                                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                             children: fileWithPreview.type === 'video' ? `Compressing video for best quality... ${Math.round(fileWithPreview.progress)}%` : 'Compressing for best quality...'
                                                                         }, void 0, false, {
                                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                            lineNumber: 452,
+                                                                            lineNumber: 500,
                                                                             columnNumber: 27
                                                                         }, this)
                                                                     ]
                                                                 }, void 0, true, {
                                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                    lineNumber: 450,
+                                                                    lineNumber: 498,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 fileWithPreview.type === 'video' && fileWithPreview.progress > 0 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1005,18 +997,18 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                                         }
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                        lineNumber: 460,
+                                                                        lineNumber: 508,
                                                                         columnNumber: 29
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                    lineNumber: 459,
+                                                                    lineNumber: 507,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 449,
+                                                            lineNumber: 497,
                                                             columnNumber: 23
                                                         }, this),
                                                         fileWithPreview.status === 'uploading' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1039,17 +1031,17 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                                     }
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                    lineNumber: 474,
+                                                                    lineNumber: 522,
                                                                     columnNumber: 27
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                lineNumber: 473,
+                                                                lineNumber: 521,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 472,
+                                                            lineNumber: 520,
                                                             columnNumber: 23
                                                         }, this),
                                                         fileWithPreview.status === 'complete' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1059,26 +1051,26 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                                     className: "h-4 w-4"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                    lineNumber: 488,
+                                                                    lineNumber: 536,
                                                                     columnNumber: 25
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     children: "Uploaded successfully"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                                    lineNumber: 489,
+                                                                    lineNumber: 537,
                                                                     columnNumber: 25
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                            lineNumber: 487,
+                                                            lineNumber: 535,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                    lineNumber: 432,
+                                                    lineNumber: 486,
                                                     columnNumber: 19
                                                 }, this),
                                                 fileWithPreview.status !== 'uploading' && fileWithPreview.status !== 'complete' && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1089,29 +1081,29 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                         className: "h-5 w-5"
                                                     }, void 0, false, {
                                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                        lineNumber: 501,
+                                                        lineNumber: 549,
                                                         columnNumber: 23
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                    lineNumber: 496,
+                                                    lineNumber: 544,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, `${fileWithPreview.file.name}-${index}`, true, {
                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                            lineNumber: 400,
+                                            lineNumber: 454,
                                             columnNumber: 17
                                         }, this))
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                lineNumber: 387,
+                                lineNumber: 441,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                            lineNumber: 385,
+                            lineNumber: 439,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -1146,7 +1138,7 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                lineNumber: 519,
+                                                lineNumber: 567,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1157,13 +1149,13 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                                lineNumber: 520,
+                                                lineNumber: 568,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                        lineNumber: 518,
+                                        lineNumber: 566,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1184,23 +1176,23 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                             }
                                         }, void 0, false, {
                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                            lineNumber: 523,
+                                            lineNumber: 571,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                        lineNumber: 522,
+                                        lineNumber: 570,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                lineNumber: 513,
+                                lineNumber: 561,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                            lineNumber: 511,
+                            lineNumber: 559,
                             columnNumber: 9
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -1221,41 +1213,41 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                                 children: error
                             }, void 0, false, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                                lineNumber: 540,
+                                lineNumber: 588,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                            lineNumber: 538,
+                            lineNumber: 586,
                             columnNumber: 9
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                    lineNumber: 308,
+                    lineNumber: 363,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                    className: "flex justify-end gap-3 pt-4 mt-4 border-t border-gray-200 bg-white/70 backdrop-blur-sm -mx-8 md:-mx-10 px-8 md:px-10 pb-0 flex-shrink-0",
+                    className: "flex flex-col sm:flex-row justify-start gap-2 sm:gap-3 pt-4 mt-4 border-t border-gray-200 bg-white/70 backdrop-blur-sm -mx-4 sm:-mx-8 md:-mx-10 px-4 sm:px-8 md:px-10 pb-0 flex-shrink-0",
                     children: [
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                             variant: "outline",
                             onClick: onClose,
                             disabled: uploading,
-                            className: "rounded-xl",
+                            className: "rounded-xl w-full sm:w-auto",
                             style: {
                                 fontFamily: 'var(--font-cormorant)'
                             },
                             children: "Cancel"
                         }, void 0, false, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                            lineNumber: 554,
+                            lineNumber: 602,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$components$2f$ui$2f$button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Button"], {
                             onClick: handleUpload,
                             disabled: !canUpload,
-                            className: "rounded-xl px-8 transition-colors",
+                            className: "rounded-xl px-6 sm:px-8 transition-colors w-full sm:w-auto text-sm sm:text-base",
                             style: {
                                 background: canUpload ? 'linear-gradient(135deg, #D4AF37 0%, #B8941F 100%)' : '#ccc',
                                 color: 'white',
@@ -1275,24 +1267,24 @@ function UploadModal({ isOpen, onClose, functions, onUploadComplete }) {
                             children: uploading ? `Uploading... ${Math.round(overallProgress)}%` : `Upload ${readyFiles.length} File${readyFiles.length !== 1 ? 's' : ''}`
                         }, void 0, false, {
                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                            lineNumber: 563,
+                            lineNumber: 611,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-                    lineNumber: 553,
+                    lineNumber: 601,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-            lineNumber: 307,
+            lineNumber: 362,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx",
-        lineNumber: 306,
+        lineNumber: 361,
         columnNumber: 5
     }, this);
 }
@@ -1574,11 +1566,11 @@ function HowToDownloadModal({ isOpen, onClose }) {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                            className: "text-xl md:text-2xl font-semibold mb-5 md:mb-6",
+                                                            className: `text-xl md:text-2xl mb-5 md:mb-6 ${language === 'english' ? 'font-bold' : 'font-semibold'}`,
                                                             style: {
                                                                 fontFamily: 'var(--font-playfair)',
                                                                 color: '#1a1a1a',
-                                                                fontWeight: 600,
+                                                                fontWeight: language === 'english' ? 700 : 600,
                                                                 fontSize: '24px'
                                                             },
                                                             children: currentTitles.title
@@ -1607,7 +1599,47 @@ function HowToDownloadModal({ isOpen, onClose }) {
                                                                     transition: {
                                                                         duration: 0.2
                                                                     },
-                                                                    children: currentInstructions.map((instruction, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                                    children: currentInstructions.map((instruction, index)=>{
+                                                                        // Function to render text with English words in bold
+                                                                        const renderInstruction = (text)=>{
+                                                                            if (language === 'english') {
+                                                                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                    className: "font-bold",
+                                                                                    children: text
+                                                                                }, void 0, false, {
+                                                                                    fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
+                                                                                    lineNumber: 232,
+                                                                                    columnNumber: 42
+                                                                                }, this);
+                                                                            }
+                                                                            // For Hindi, detect and bold English words/phrases
+                                                                            // Match English words, phrases in quotes, or common English terms
+                                                                            const parts = text.split(/(['"]?[A-Za-z][A-Za-z\s/]*['"]?)/g);
+                                                                            return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+                                                                                children: parts.map((part, i)=>{
+                                                                                    // Check if part contains English letters
+                                                                                    const hasEnglish = /[A-Za-z]/.test(part);
+                                                                                    if (hasEnglish && part.trim().length > 0) {
+                                                                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                            className: "font-bold",
+                                                                                            children: part
+                                                                                        }, i, false, {
+                                                                                            fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
+                                                                                            lineNumber: 246,
+                                                                                            columnNumber: 43
+                                                                                        }, this);
+                                                                                    }
+                                                                                    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                                        children: part
+                                                                                    }, i, false, {
+                                                                                        fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
+                                                                                        lineNumber: 251,
+                                                                                        columnNumber: 46
+                                                                                    }, this);
+                                                                                })
+                                                                            }, void 0, false);
+                                                                        };
+                                                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                             className: "flex items-start gap-3",
                                                                             style: {
                                                                                 fontFamily: 'var(--font-cormorant)',
@@ -1627,23 +1659,24 @@ function HowToDownloadModal({ isOpen, onClose }) {
                                                                                     ]
                                                                                 }, void 0, true, {
                                                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
-                                                                                    lineNumber: 239,
-                                                                                    columnNumber: 33
+                                                                                    lineNumber: 268,
+                                                                                    columnNumber: 35
                                                                                 }, this),
                                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                                     className: "text-gray-700 flex-1",
-                                                                                    children: instruction
+                                                                                    children: renderInstruction(instruction)
                                                                                 }, void 0, false, {
                                                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
-                                                                                    lineNumber: 245,
-                                                                                    columnNumber: 33
+                                                                                    lineNumber: 274,
+                                                                                    columnNumber: 35
                                                                                 }, this)
                                                                             ]
                                                                         }, index, true, {
                                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
-                                                                            lineNumber: 229,
-                                                                            columnNumber: 31
-                                                                        }, this))
+                                                                            lineNumber: 258,
+                                                                            columnNumber: 33
+                                                                        }, this);
+                                                                    })
                                                                 }, `${activeTab}-${language}`, false, {
                                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
                                                                     lineNumber: 221,
@@ -1668,17 +1701,17 @@ function HowToDownloadModal({ isOpen, onClose }) {
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                            className: "text-xl md:text-2xl font-semibold mb-4 md:mb-5",
+                                                            className: `text-xl md:text-2xl mb-4 md:mb-5 ${language === 'english' ? 'font-bold' : 'font-semibold'}`,
                                                             style: {
                                                                 fontFamily: 'var(--font-playfair)',
                                                                 color: '#1a1a1a',
-                                                                fontWeight: 600,
+                                                                fontWeight: language === 'english' ? 700 : 600,
                                                                 fontSize: '24px'
                                                             },
                                                             children: currentTitles.videoTitle
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
-                                                            lineNumber: 255,
+                                                            lineNumber: 287,
                                                             columnNumber: 23
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1695,18 +1728,18 @@ function HowToDownloadModal({ isOpen, onClose }) {
                                                                 allowFullScreen: true
                                                             }, void 0, false, {
                                                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
-                                                                lineNumber: 273,
+                                                                lineNumber: 305,
                                                                 columnNumber: 25
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
-                                                            lineNumber: 266,
+                                                            lineNumber: 298,
                                                             columnNumber: 23
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/how-to-download-modal.tsx",
-                                                    lineNumber: 254,
+                                                    lineNumber: 286,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
@@ -1770,6 +1803,7 @@ __turbopack_context__.s([
 ]);
 var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/next/navigation.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/lucide-react/dist/esm/icons/upload.js [app-client] (ecmascript) <export default as Upload>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/lucide-react/dist/esm/icons/sparkles.js [app-client] (ecmascript) <export default as Sparkles>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$download$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Download$3e$__ = __turbopack_context__.i("[project]/aabhas_kavita_wedding_gallery_frontend/node_modules/lucide-react/dist/esm/icons/download.js [app-client] (ecmascript) <export default as Download>");
@@ -1785,11 +1819,46 @@ var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
+;
 function FloatingUploadButton({ functions, onUploadComplete }) {
     _s();
     const [isUploadModalOpen, setIsUploadModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const [isDownloadModalOpen, setIsDownloadModalOpen] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [hasSelectedPhotos, setHasSelectedPhotos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const [hasSelectedPhotos, setHasSelectedPhotos] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false) // Start as false so buttons show by default
+    ;
+    const pathname = (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"])();
+    // Clear selections when on function page or home page
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "FloatingUploadButton.useEffect": ()=>{
+            if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
+            ;
+            // On home page, function page, or gallery page, clear all selections
+            const isHomePage = pathname === '/';
+            const isFunctionPage = /^\/function\/\d+$/.test(pathname);
+            const isGalleryPage = pathname === '/gallery' || pathname.startsWith('/gallery?');
+            if (isHomePage || isFunctionPage || isGalleryPage) {
+                // Clear all selected photos from localStorage
+                try {
+                    const keysToRemove = [];
+                    for(let i = 0; i < localStorage.length; i++){
+                        const key = localStorage.key(i);
+                        if (key && key.startsWith('selected-photos-')) {
+                            keysToRemove.push(key);
+                        }
+                    }
+                    keysToRemove.forEach({
+                        "FloatingUploadButton.useEffect": (key)=>localStorage.removeItem(key)
+                    }["FloatingUploadButton.useEffect"]);
+                    setHasSelectedPhotos(false);
+                } catch (error) {
+                    console.error('Error clearing selected photos:', error);
+                    setHasSelectedPhotos(false);
+                }
+            }
+        }
+    }["FloatingUploadButton.useEffect"], [
+        pathname
+    ]);
     // Check for selected photos in localStorage
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "FloatingUploadButton.useEffect": ()=>{
@@ -1797,6 +1866,15 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                 "FloatingUploadButton.useEffect.checkSelectedPhotos": ()=>{
                     if ("TURBOPACK compile-time falsy", 0) //TURBOPACK unreachable
                     ;
+                    const currentPath = pathname || window.location.pathname;
+                    // On home page, function page, or gallery page, always show buttons
+                    const isHomePage = currentPath === '/' || currentPath === '';
+                    const isFunctionPage = /^\/function\/\d+$/.test(currentPath);
+                    const isGalleryPage = currentPath === '/gallery' || currentPath.startsWith('/gallery?');
+                    if (isHomePage || isFunctionPage || isGalleryPage) {
+                        setHasSelectedPhotos(false);
+                        return;
+                    }
                     try {
                         // Check all localStorage keys that match the pattern 'selected-photos-*'
                         let hasSelections = false;
@@ -1804,22 +1882,31 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                             const key = localStorage.key(i);
                             if (key && key.startsWith('selected-photos-')) {
                                 const value = localStorage.getItem(key);
-                                if (value) {
+                                if (value && value !== '[]' && value !== 'null') {
                                     try {
                                         const ids = JSON.parse(value);
-                                        if (ids && ids.length > 0) {
+                                        if (Array.isArray(ids) && ids.length > 0) {
                                             hasSelections = true;
                                             break;
+                                        } else {
+                                            // Clean up empty or invalid entries
+                                            localStorage.removeItem(key);
                                         }
                                     } catch (e) {
-                                    // Invalid JSON, skip
+                                        // Invalid JSON, remove it
+                                        localStorage.removeItem(key);
                                     }
+                                } else {
+                                    // Empty array or null, remove it
+                                    localStorage.removeItem(key);
                                 }
                             }
                         }
                         setHasSelectedPhotos(hasSelections);
                     } catch (error) {
                         console.error('Error checking selected photos:', error);
+                        // On error, default to showing buttons
+                        setHasSelectedPhotos(false);
                     }
                 }
             }["FloatingUploadButton.useEffect.checkSelectedPhotos"];
@@ -1828,7 +1915,9 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
             // Listen for custom event from PhotosGrid
             const handleSelectionChange = {
                 "FloatingUploadButton.useEffect.handleSelectionChange": (event)=>{
-                    setHasSelectedPhotos(event.detail.hasSelections);
+                    if (event.detail && typeof event.detail.hasSelections === 'boolean') {
+                        setHasSelectedPhotos(event.detail.hasSelections);
+                    }
                 }
             }["FloatingUploadButton.useEffect.handleSelectionChange"];
             // Listen for storage events (when localStorage changes in other tabs/windows)
@@ -1845,15 +1934,20 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                 }
             })["FloatingUploadButton.useEffect"];
         }
-    }["FloatingUploadButton.useEffect"], []);
+    }["FloatingUploadButton.useEffect"], [
+        pathname
+    ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: [
             !hasSelectedPhotos && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "fixed bottom-6 left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 md:bottom-8 z-50 flex gap-3",
+                className: "fixed left-1/2 -translate-x-1/2 md:left-auto md:translate-x-0 md:right-10 z-[100] flex gap-3",
+                style: {
+                    bottom: `calc(1.5rem + env(safe-area-inset-bottom))`
+                },
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
                         onClick: ()=>setIsDownloadModalOpen(true),
-                        className: "rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4AF37] hover:bg-[#B8941F] text-white flex items-center gap-2",
+                        className: "rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4AF37] hover:bg-[#B8941F] text-white flex items-center gap-2 z-[100]",
                         whileHover: {
                             scale: 1.05
                         },
@@ -1865,7 +1959,7 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                                 className: "h-5 w-5 flex-shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                                lineNumber: 89,
+                                lineNumber: 147,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1876,18 +1970,18 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                                 children: "How to Download"
                             }, void 0, false, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                                lineNumber: 90,
+                                lineNumber: 148,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                        lineNumber: 83,
+                        lineNumber: 141,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$render$2f$components$2f$motion$2f$proxy$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["motion"].button, {
                         onClick: ()=>setIsUploadModalOpen(true),
-                        className: "rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4A017] hover:bg-[#caa113] text-white flex items-center gap-2",
+                        className: "rounded-full sm:rounded-full px-4 py-3 shadow-xl bg-[#D4A017] hover:bg-[#caa113] text-white flex items-center gap-2 z-[100]",
                         whileHover: {
                             scale: 1.05
                         },
@@ -1899,7 +1993,7 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                                 className: "h-5 w-5 flex-shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                                lineNumber: 101,
+                                lineNumber: 159,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -1910,26 +2004,26 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                                 children: "Upload Yours"
                             }, void 0, false, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                                lineNumber: 102,
+                                lineNumber: 160,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$upload$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Upload$3e$__["Upload"], {
                                 className: "h-5 w-5 flex-shrink-0"
                             }, void 0, false, {
                                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                                lineNumber: 105,
+                                lineNumber: 163,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                        lineNumber: 95,
+                        lineNumber: 153,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                lineNumber: 82,
+                lineNumber: 135,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -1940,12 +2034,12 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                     onUploadComplete: onUploadComplete
                 }, void 0, false, {
                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                    lineNumber: 112,
+                    lineNumber: 170,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                lineNumber: 110,
+                lineNumber: 168,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$framer$2d$motion$2f$dist$2f$es$2f$components$2f$AnimatePresence$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["AnimatePresence"], {
@@ -1954,18 +2048,22 @@ function FloatingUploadButton({ functions, onUploadComplete }) {
                     onClose: ()=>setIsDownloadModalOpen(false)
                 }, void 0, false, {
                     fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                    lineNumber: 123,
+                    lineNumber: 181,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx",
-                lineNumber: 121,
+                lineNumber: 179,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true);
 }
-_s(FloatingUploadButton, "R2gN0dbqkeEchZ20QLm3m3/BtSs=");
+_s(FloatingUploadButton, "5nByvGbKGOmoGl6E8B2eI415IdM=", false, function() {
+    return [
+        __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_gallery_frontend$2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["usePathname"]
+    ];
+});
 _c = FloatingUploadButton;
 var _c;
 __turbopack_context__.k.register(_c, "FloatingUploadButton");

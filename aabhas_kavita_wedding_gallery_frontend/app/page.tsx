@@ -47,12 +47,12 @@ export default async function HomePage() {
   const functions = await getFunctions()
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-[100dvh] relative overflow-hidden">
       {/* Watermark Background */}
       <div 
-        className="absolute inset-0 pointer-events-none"
+        className="fixed inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'url("/Aabhas and Kavita wedding logo.png")',
+          backgroundImage: 'url("/Ankita and Sahil wedding logo.png")',
           backgroundSize: '50% auto',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -78,9 +78,9 @@ export default async function HomePage() {
               backgroundClip: 'text',
             }}
           >
-            <span className="block md:inline">Aabhas</span>
+            <span className="block md:inline">Ankita</span>
             <span className="block md:inline md:mx-2"> & </span>
-            <span className="block md:inline">Kavita</span>
+            <span className="block md:inline">Sahil</span>
           </h1>
           <div className="flex items-center justify-center gap-3 mb-6">
             <Heart className="h-6 w-6 text-[#D4A5A5] fill-[#D4A5A5]" />

@@ -38,13 +38,16 @@ export default async function FunctionVideosPage({
 
   if (!functionData) redirect('/')
 
-  const videos = functionData.media.filter((m) => m.type === 'video')
+  // Filter and sort videos by createdAt descending (newest first)
+  const videos = functionData.media
+    .filter((m) => m.type === 'video')
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
   const photosCount = functionData.media.filter((m) => m.type === 'photo').length
   const totalCount = functionData.media.length
 
   return (
-    <div className="min-h-screen relative">
-      <div className="fixed inset-0 pointer-events-none bg-[url('/Aabhas and Kavita wedding logo.png')] bg-center bg-no-repeat bg-fixed opacity-5"></div>
+    <div className="min-h-[100dvh] relative">
+      <div className="fixed inset-0 pointer-events-none bg-[url('/Ankita and Sahil wedding logo.png')] bg-center bg-no-repeat bg-fixed opacity-5"></div>
       <div className="fixed inset-0 gradient-wedding pointer-events-none"></div>
 
       <div className="sticky top-0 z-30 bg-white/80 backdrop-blur-md border-b border-[#D4AF37]/20 shadow-sm">

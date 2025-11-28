@@ -57,11 +57,11 @@ export default async function FunctionPage({
   ]
 
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-[100dvh] relative">
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'url("/Aabhas and Kavita wedding logo.png")',
+          backgroundImage: 'url("/Ankita and Sahil wedding logo.png")',
           backgroundSize: '50% auto',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
