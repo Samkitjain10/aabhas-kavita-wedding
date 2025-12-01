@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button'
 import { DownloadProgress } from '@/components/download-progress'
 import { FloatingUploadButton } from '@/components/floating-upload-button'
 import { motion } from 'framer-motion'
+import { Language, translateFunctionName } from '@/lib/translations'
 
 interface Media {
   id: number
@@ -41,6 +42,25 @@ export default function GalleryPage() {
   const [touchStart, setTouchStart] = useState<number | null>(null)
   const [touchEnd, setTouchEnd] = useState<number | null>(null)
   const [functions, setFunctions] = useState<Function[]>([])
+  const [language, setLanguage] = useState<Language>('en')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('wedding-gallery-language') as Language | null
+      if (savedLang === 'en' || savedLang === 'hi') {
+        setLanguage(savedLang)
+      }
+    }
+
+    const handleLanguageChange = (e: CustomEvent<Language>) => {
+      setLanguage(e.detail)
+    }
+
+    window.addEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    return () => {
+      window.removeEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    }
+  }, [])
 
   const fetchFunctions = useCallback(async () => {
     try {
@@ -451,7 +471,7 @@ export default function GalleryPage() {
             {/* Mobile: Heading and Download button on same line */}
             <div className="flex flex-row items-center justify-between gap-2 sm:flex-col sm:items-start sm:gap-0">
               <div className="text-xs uppercase tracking-wide text-gray-500">
-                {media.function.name}
+                {translateFunctionName(media.function.name, language)}
               </div>
               <Button
                 onClick={handleDownload}

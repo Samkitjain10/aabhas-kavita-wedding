@@ -4,7 +4,7 @@ import path from 'path'
 
 export async function GET(request: NextRequest) {
   try {
-    const logoPath = path.join(process.cwd(), 'public', 'Ankita and Sahil wedding logo.png')
+    const logoPath = path.join(process.cwd(), 'public', 'Aabhas and Kavita wedding logo.png')
     const imageBuffer = fs.readFileSync(logoPath)
     
     return new NextResponse(imageBuffer, {

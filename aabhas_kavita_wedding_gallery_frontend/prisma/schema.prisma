@@ -22,10 +22,12 @@ model User {
 model Function {
   id          Int      @id @default(autoincrement())
   name        String   @unique @db.VarChar(255)
-  description String?  @db.Text
+  priority    Int      @default(0)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   media       Media[]
+  
+  @@index([priority])
 }
 
 model Media {

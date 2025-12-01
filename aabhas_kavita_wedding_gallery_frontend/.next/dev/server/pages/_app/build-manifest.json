@@ -1,0 +1,23 @@
+{
+  "devFiles": [],
+  "ampDevFiles": [],
+  "polyfillFiles": [],
+  "lowPriorityFiles": [],
+  "rootMainFiles": [],
+  "pages": {
+    "/_app": [
+      "static/chunks/71af5_next_dist_compiled_ce728ba2._.js",
+      "static/chunks/71af5_next_dist_shared_lib_2abbd594._.js",
+      "static/chunks/71af5_next_dist_client_6c2b3fc5._.js",
+      "static/chunks/71af5_next_dist_02f07920._.js",
+      "static/chunks/71af5_next_app_c5b71d07.js",
+      "static/chunks/[next]_entry_page-loader_ts_809b2497._.js",
+      "static/chunks/71af5_react-dom_23639609._.js",
+      "static/chunks/71af5_82689abc._.js",
+      "static/chunks/[root-of-the-server]__02be801b._.js",
+      "static/chunks/aabhas_kavita_wedding_gallery_frontend_pages__app_2da965e7._.js",
+      "static/chunks/turbopack-aabhas_kavita_wedding_gallery_frontend_pages__app_56e3bd27._.js"
+    ]
+  },
+  "ampFirstPages": []
+}

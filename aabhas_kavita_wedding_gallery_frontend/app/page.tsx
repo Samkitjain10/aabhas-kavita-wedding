@@ -2,32 +2,39 @@ import { redirect } from 'next/navigation'
 import { getSession } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { HomePageClient } from '@/components/home-page-client'
-import Link from 'next/link'
-import { Sparkles, Heart } from 'lucide-react'
+import { HomePageContent } from '@/components/home-page-content'
 
 async function getFunctions() {
   try {
     let functions = await prisma.function.findMany({
-      orderBy: { createdAt: 'asc' },
+      select: {
+        id: true,
+        name: true,
+        priority: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+      orderBy: { priority: 'asc' },
     })
 
-    // Ensure "Other" function exists
-    let otherFunction = functions.find(f => f.name === 'Other')
-    if (!otherFunction) {
-      otherFunction = await prisma.function.create({
+    // Ensure "Others" function exists
+    let othersFunction = functions.find(f => f.name === 'Others')
+    if (!othersFunction) {
+      othersFunction = await prisma.function.create({
         data: {
-          name: 'Other',
-          description: 'Miscellaneous photos and videos',
+          name: 'Others',
+          priority: 9,
         },
       })
-      functions.push(otherFunction)
+      functions.push(othersFunction)
     }
 
-    // Sort functions so "Other" appears last
+    // Sort functions by priority (Others should be last)
     functions = functions.sort((a, b) => {
-      if (a.name === 'Other') return 1
-      if (b.name === 'Other') return -1
-      return a.createdAt.getTime() - b.createdAt.getTime()
+      // If priority is 0 (old functions without priority), put them at the end
+      if (a.priority === 0 && b.priority !== 0) return 1
+      if (b.priority === 0 && a.priority !== 0) return -1
+      return a.priority - b.priority
     })
 
     return functions
@@ -47,119 +54,9 @@ export default async function HomePage() {
   const functions = await getFunctions()
 
   return (
-    <div className="min-h-[100dvh] relative overflow-hidden">
-      {/* Watermark Background */}
-      <div 
-        className="fixed inset-0 pointer-events-none"
-        style={{
-          backgroundImage: 'url("/Ankita and Sahil wedding logo.png")',
-          backgroundSize: '50% auto',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          backgroundAttachment: 'fixed',
-          opacity: '0.08',
-          zIndex: 0,
-        }}
-      ></div>
-
-      {/* Hero Banner Section */}
-      <section className="relative z-10 pt-20 pb-32 px-4">
-        <div className="container mx-auto max-w-6xl text-center">
-          <div className="mb-8 flex justify-center">
-            <Sparkles className="h-8 w-8 text-[#D4AF37] animate-pulse" />
-          </div>
-          <h1 
-            className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6"
-            style={{ 
-              fontFamily: 'var(--font-playfair)',
-              background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 50%, #D4A5A5 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            <span className="block md:inline">Ankita</span>
-            <span className="block md:inline md:mx-2"> & </span>
-            <span className="block md:inline">Sahil</span>
-          </h1>
-          <div className="flex items-center justify-center gap-3 mb-6">
-            <Heart className="h-6 w-6 text-[#D4A5A5] fill-[#D4A5A5]" />
-            <p 
-              className="text-2xl md:text-3xl lg:text-4xl text-gray-700"
-              style={{ fontFamily: 'var(--font-cormorant)' }}
-            >
-              Our Wedding Gallery
-            </p>
-            <Heart className="h-6 w-6 text-[#D4A5A5] fill-[#D4A5A5]" />
-          </div>
-          <p 
-            className="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto"
-            style={{ fontFamily: 'var(--font-cormorant)' }}
-          >
-            Relive the beautiful moments from our special day
-          </p>
-        </div>
-      </section>
-
-      {/* Functions Grid with Glass Morphism */}
-      <section className="relative z-10 px-4 pb-20">
-        <div className="container mx-auto max-w-7xl">
-          {functions.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-500 text-xl">No functions available yet.</p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {functions.map((func, index) => (
-                <Link 
-                  key={func.id} 
-                  href={`/function/${func.id}`}
-                  className="group"
-                >
-                  <div 
-                    className="glass-strong rounded-3xl p-5 h-full flex flex-col transition-all duration-500 hover:scale-105 hover:shadow-2xl"
-                    style={{
-                      background: 'rgba(255, 255, 255, 0.4)',
-                      backdropFilter: 'blur(20px)',
-                      border: '1px solid rgba(212, 175, 55, 0.2)',
-                    }}
-                  >
-                    <div>
-                      <div className="mb-3">
-                      <div 
-                        className="text-4xl font-bold mb-2"
-                        style={{ 
-                          fontFamily: 'var(--font-playfair)',
-                          color: '#D4AF37',
-                        }}
-                      >
-                        {func.name}
-                      </div>
-                      {func.description && (
-                        <p 
-                          className="text-gray-700 leading-relaxed"
-                          style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1.1rem' }}
-                        >
-                          {func.description}
-                        </p>
-                      )}
-                      </div>
-                    </div>
-                    <div className="mt-4 flex items-center text-[#D4AF37] group-hover:translate-x-2 transition-transform duration-300">
-                      <span className="font-medium" style={{ fontFamily: 'var(--font-cormorant)' }}>View Gallery</span>
-                      <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          )}
-        </div>
-      </section>
-
+    <>
+      <HomePageContent functions={functions} />
       <HomePageClient functions={functions} />
-    </div>
+    </>
   )
 }

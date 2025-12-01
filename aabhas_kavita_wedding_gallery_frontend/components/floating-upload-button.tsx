@@ -6,6 +6,7 @@ import { Upload, Sparkles, Download } from 'lucide-react'
 import { UploadModal } from './upload-modal'
 import { HowToDownloadModal } from './how-to-download-modal'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Language, getTranslations } from '@/lib/translations'
 
 interface Function {
   id: number
@@ -21,7 +22,28 @@ export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUp
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false)
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false)
   const [hasSelectedPhotos, setHasSelectedPhotos] = useState(false) // Start as false so buttons show by default
+  const [language, setLanguage] = useState<Language>('en')
   const pathname = usePathname()
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('wedding-gallery-language') as Language | null
+      if (savedLang === 'en' || savedLang === 'hi') {
+        setLanguage(savedLang)
+      }
+    }
+
+    const handleLanguageChange = (e: CustomEvent<Language>) => {
+      setLanguage(e.detail)
+    }
+
+    window.addEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    return () => {
+      window.removeEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    }
+  }, [])
+
+  const t = getTranslations(language)
 
   // Clear selections when on function page or home page
   useEffect(() => {
@@ -146,7 +168,7 @@ export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUp
           >
             <Download className="h-5 w-5 flex-shrink-0" />
             <span className="font-semibold whitespace-nowrap text-sm sm:text-base" style={{ fontFamily: 'var(--font-cormorant)' }}>
-              How to Download
+              {t.common.howToDownload}
             </span>
           </motion.button>
           
@@ -158,7 +180,7 @@ export function FloatingUploadButton({ functions, onUploadComplete }: FloatingUp
           >
             <Sparkles className="h-5 w-5 flex-shrink-0" />
             <span className="font-semibold whitespace-nowrap text-sm sm:text-base" style={{ fontFamily: 'var(--font-cormorant)' }}>
-              Upload Yours
+              {t.common.uploadYours}
             </span>
             <Upload className="h-5 w-5 flex-shrink-0" />
           </motion.button>

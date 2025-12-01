@@ -1,10 +1,8 @@
 {
-  "/api/functions/route": "app/api/functions/route.js",
-  "/api/media/[id]/route": "app/api/media/[id]/route.js",
+  "/api/login/route": "app/api/login/route.js",
   "/function/[id]/page": "app/function/[id]/page.js",
   "/function/[id]/photos/page": "app/function/[id]/photos/page.js",
   "/function/[id]/videos/page": "app/function/[id]/videos/page.js",
-  "/gallery/page": "app/gallery/page.js",
   "/login/page": "app/login/page.js",
   "/page": "app/page.js"
 }

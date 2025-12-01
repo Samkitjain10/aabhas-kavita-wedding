@@ -7,6 +7,7 @@ import { CheckCircle2, Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { DownloadProgress } from '@/components/download-progress'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Language, getTranslations } from '@/lib/translations'
 
 interface Photo {
   id: number
@@ -24,9 +25,30 @@ interface PhotosGridProps {
 
 export function PhotosGrid({ functionId, photos, isSelectionMode = false, onSelectionModeChange }: PhotosGridProps) {
   const storageKey = `selected-photos-${functionId}`
+  const [language, setLanguage] = useState<Language>('en')
   
   // Always start with empty Set to avoid hydration mismatch
   const [selectedPhotos, setSelectedPhotos] = useState<Set<number>>(new Set())
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('wedding-gallery-language') as Language | null
+      if (savedLang === 'en' || savedLang === 'hi') {
+        setLanguage(savedLang)
+      }
+    }
+
+    const handleLanguageChange = (e: CustomEvent<Language>) => {
+      setLanguage(e.detail)
+    }
+
+    window.addEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    return () => {
+      window.removeEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    }
+  }, [])
+
+  const t = getTranslations(language)
   
   // Clear selections when selection mode is turned off
   useEffect(() => {
@@ -231,7 +253,9 @@ export function PhotosGrid({ functionId, photos, isSelectionMode = false, onSele
   if (photos.length === 0) {
     return (
       <div className="text-center py-20">
-        <p className="text-gray-500 text-xl">No photos uploaded yet.</p>
+        <p className="text-gray-500 text-xl" style={{ fontFamily: 'var(--font-cormorant)' }}>
+          {t.common.noPhotosUploaded}
+        </p>
       </div>
     )
   }

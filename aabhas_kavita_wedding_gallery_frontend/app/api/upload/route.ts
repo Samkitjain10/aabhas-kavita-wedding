@@ -99,7 +99,6 @@ export async function POST(request: NextRequest) {
         otherFunction = await prisma.function.create({
           data: {
             name: 'Other',
-            description: 'Miscellaneous photos and videos',
           },
         })
       }

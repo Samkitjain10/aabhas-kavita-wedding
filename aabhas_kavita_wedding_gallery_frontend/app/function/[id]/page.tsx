@@ -3,7 +3,8 @@ import Link from 'next/link'
 import { prisma } from '@/lib/prisma'
 import { getSession } from '@/lib/auth'
 import { FunctionPageClient } from '@/components/function-page-client'
-import { Folder, Camera, Video, ArrowLeft } from 'lucide-react'
+import { FunctionPageContent } from '@/components/function-page-content'
+import { ArrowLeft } from 'lucide-react'
 
 export default async function FunctionPage({
   params,
@@ -34,34 +35,12 @@ export default async function FunctionPage({
 
   if (!functionData) redirect('/')
 
-  const photoCount = functionData.media.filter((m) => m.type === 'photo').length
-  const videoCount = functionData.media.filter((m) => m.type === 'video').length
-
-  const folderCards = [
-    {
-      title: 'Photos',
-      description: 'All captured moments from this celebration.',
-      href: `/function/${functionId}/photos`,
-      icon: <Camera className="h-8 w-8" />,
-      count: photoCount,
-      gradient: 'from-[#D4AF37] to-[#B8941F]',
-    },
-    {
-      title: 'Videos',
-      description: 'Watch the highlights and heartfelt clips.',
-      href: `/function/${functionId}/videos`,
-      icon: <Video className="h-8 w-8" />,
-      count: videoCount,
-      gradient: 'from-[#E8C5B8] to-[#D4A5A5]',
-    },
-  ]
-
   return (
     <div className="min-h-[100dvh] relative">
       <div
         className="fixed inset-0 pointer-events-none"
         style={{
-          backgroundImage: 'url("/Ankita and Sahil wedding logo.png")',
+          backgroundImage: 'url("/Aabhas and Kavita wedding logo.png")',
           backgroundSize: '50% auto',
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
@@ -87,71 +66,7 @@ export default async function FunctionPage({
         </div>
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 pt-6 pb-12">
-        <div className="mb-12">
-          <h1
-            className="text-5xl md:text-6xl font-bold mb-4 pb-4"
-            style={{
-              fontFamily: 'var(--font-playfair)',
-              background: 'linear-gradient(135deg, #D4AF37 0%, #B8941F 50%, #D4A5A5 100%)',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-            }}
-          >
-            {functionData.name}
-          </h1>
-          {functionData.description && (
-            <p
-              className="text-xl text-gray-700 max-w-3xl"
-              style={{ fontFamily: 'var(--font-cormorant)' }}
-            >
-              {functionData.description}
-            </p>
-          )}
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {folderCards.map((folder, index) => (
-            <Link key={folder.title} href={folder.href} className={`group ${folder.title === 'Videos' ? 'mb-12 md:mb-0' : ''}`}>
-              <div
-                className="rounded-3xl p-8 h-full bg-white/60 backdrop-blur-xl border border-white/40 shadow-xl transition-all duration-300 group-hover:-translate-y-2"
-              >
-                {/* Line 1: Icon, Heading, Count */}
-                <div className="flex items-center gap-4 mb-4">
-                  <div
-                    className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${folder.gradient} text-white flex items-center justify-center flex-shrink-0`}
-                  >
-                    {folder.icon}
-                  </div>
-                  <div className="flex items-baseline gap-3 flex-1">
-                    <h2
-                      className="text-3xl font-semibold"
-                      style={{ fontFamily: 'var(--font-playfair)' }}
-                    >
-                      {folder.title}
-                    </h2>
-                    <span className="text-sm text-gray-500" style={{ fontFamily: 'var(--font-cormorant)' }}>
-                      {folder.count} items
-                    </span>
-                  </div>
-                </div>
-                
-                {/* Line 2: Description */}
-                <p className="text-gray-600 mb-4" style={{ fontFamily: 'var(--font-cormorant)' }}>
-                  {folder.description}
-                </p>
-                
-                {/* Line 3: View Photos */}
-                <div className="inline-flex items-center gap-2 text-[#D4AF37] font-medium" style={{ fontFamily: 'var(--font-cormorant)' }}>
-                  View {folder.title}
-                  <Folder className="h-5 w-5" />
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
+      <FunctionPageContent functionData={functionData} />
 
       <FunctionPageClient functions={allFunctions} />
     </div>

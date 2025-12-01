@@ -172,12 +172,12 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$aabhas_kavita_wedding_galler
 ;
 ;
 const metadata = {
-    title: "Ankita and Sahil's Wedding Gallery",
+    title: "Aabhas and Kavita's Wedding Gallery",
     description: "Share and view beautiful memories from our wedding",
     icons: {
         icon: [
             {
-                url: "/Ankita and Sahil wedding logo.png",
+                url: "/Aabhas and Kavita wedding logo.png",
                 sizes: "any"
             },
             {
@@ -185,8 +185,8 @@ const metadata = {
                 sizes: "any"
             }
         ],
-        shortcut: "/Ankita and Sahil wedding logo.png",
-        apple: "/Ankita and Sahil wedding logo.png"
+        shortcut: "/Aabhas and Kavita wedding logo.png",
+        apple: "/Aabhas and Kavita wedding logo.png"
     }
 };
 const viewport = {

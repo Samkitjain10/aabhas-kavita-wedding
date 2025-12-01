@@ -1,0 +1,31 @@
+{
+  "sorted_middleware": [],
+  "middleware": {
+    "/": {
+      "files": [
+        "server/edge/chunks/_ff7ba35b._.js",
+        "server/edge/chunks/[root-of-the-server]__3ec308db._.js",
+        "server/edge/chunks/turbopack-aabhas_kavita_wedding_gallery_backend_edge-wrapper_2d1b92d2.js"
+      ],
+      "name": "middleware",
+      "page": "/",
+      "matchers": [
+        {
+          "regexp": "/:nextData(_next/data/[^/]{1,})?/((?!_next/static|_next/image|favicon.ico).*){(\\\\.json)}?",
+          "originalSource": "/((?!_next/static|_next/image|favicon.ico).*)"
+        }
+      ],
+      "wasm": [],
+      "assets": [],
+      "env": {
+        "__NEXT_BUILD_ID": "development",
+        "NEXT_SERVER_ACTIONS_ENCRYPTION_KEY": "WbpZLkDdRFRl0RkkMvuuq1Cmuf5fxXjKl5L/mk4I1N8=",
+        "__NEXT_PREVIEW_MODE_ID": "0dbbe510afb6442c50b1755db7cc251a",
+        "__NEXT_PREVIEW_MODE_ENCRYPTION_KEY": "248b89b58ba489adec3fb11ef16421608fddb062341ad691ec3fa871cf62d05c",
+        "__NEXT_PREVIEW_MODE_SIGNING_KEY": "cd3a7a4ec3356a11a36a53eaf1dab79bfce90e1fe1f4229e4558e92327319c95"
+      }
+    }
+  },
+  "instrumentation": null,
+  "functions": {}
+}

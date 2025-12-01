@@ -26,15 +26,15 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Ankita and Sahil's Wedding Gallery",
+  title: "Aabhas and Kavita's Wedding Gallery",
   description: "Share and view beautiful memories from our wedding",
   icons: {
     icon: [
-      { url: "/Ankita and Sahil wedding logo.png", sizes: "any" },
+      { url: "/Aabhas and Kavita wedding logo.png", sizes: "any" },
       { url: "/icon.png", sizes: "any" },
     ],
-    shortcut: "/Ankita and Sahil wedding logo.png",
-    apple: "/Ankita and Sahil wedding logo.png",
+    shortcut: "/Aabhas and Kavita wedding logo.png",
+    apple: "/Aabhas and Kavita wedding logo.png",
   },
 };
 

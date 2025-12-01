@@ -1,0 +1,13 @@
+__turbopack_load_page_chunks__("/_error", [
+  "static/chunks/71af5_next_dist_compiled_ce728ba2._.js",
+  "static/chunks/71af5_next_dist_shared_lib_4a558038._.js",
+  "static/chunks/71af5_next_dist_client_6c2b3fc5._.js",
+  "static/chunks/71af5_next_dist_4ed906e0._.js",
+  "static/chunks/71af5_next_error_e65dbd47.js",
+  "static/chunks/[next]_entry_page-loader_ts_94940c6f._.js",
+  "static/chunks/71af5_react-dom_23639609._.js",
+  "static/chunks/71af5_82689abc._.js",
+  "static/chunks/[root-of-the-server]__69ba86d1._.js",
+  "static/chunks/aabhas_kavita_wedding_gallery_frontend_pages__error_2da965e7._.js",
+  "static/chunks/turbopack-aabhas_kavita_wedding_gallery_frontend_pages__error_c7128db3._.js"
+])

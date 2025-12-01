@@ -1,61 +1,138 @@
-[00:00:03.073] Server  LOG      ✓ Ready in 2.7s
-[00:00:06.529] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:06.545] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:07.007] Server  ERROR    ⨯ ReferenceError: window is not defined
-[00:00:07.014] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:07.220] Server  ERROR    ⨯ ReferenceError: window is not defined
-[00:00:07.229] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:07.297] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:07.523] Server  ERROR    ⨯ ReferenceError: window is not defined
-[00:00:07.531] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:07.940] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:07.969] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:00:28.065] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:28.083] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:28.647] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /login. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:00:43.528] Server  LOG      ✓ Compiled in 152ms
-[00:00:53.224] Server  LOG      ✓ Compiled in 287ms
-[00:01:07.871] Server  WARN     ⚠ Unsupported metadata viewport is configured in metadata export in /. Please move it to viewport export instead.
-Read more: https://nextjs.org/docs/app/api-reference/functions/generate-viewport
-[00:01:08.536] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:01:47.960] Server  LOG      ✓ Compiled in 19ms
-[00:02:09.541] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:03:32.498] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:04:02.987] Server  LOG      ✓ Compiled in 63ms
-[00:09:03.480] Server  LOG      ✓ Compiled in 151ms
-[00:12:30.140] Browser ERROR   Failed to load FFmpeg: Error: Cannot find module as expression is too dynamic
-[00:12:30.140] Browser ERROR   Video compression failed: {}
-[00:14:38.757] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
-[00:14:38.757] Browser ERROR   HEIC preview conversion error: {}
-[00:14:38.757] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
-[00:14:38.757] Browser ERROR   HEIC preview conversion error: {}
-[00:14:38.757] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
-[00:14:39.017] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
-[00:14:39.017] Browser ERROR   HEIC conversion error: {"code":2,"message":"ERR_LIBHEIF format not supported"}
-[00:14:39.018] Browser ERROR   HEIC preview conversion error: {}
-[00:14:39.253] Browser ERROR   HEIC conversion error: {"code":2,"message":"ERR_LIBHEIF format not supported"}
-[00:15:19.817] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:15:27.881] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
-[00:15:27.881] Browser ERROR   HEIC conversion error: {"code":1,"message":"ERR_USER Image is already browser readable: image/png"}
-[00:15:27.881] Browser ERROR   HEIC preview conversion error: {}
-[00:16:48.510] Server  LOG      ✓ Compiled in 0ms
-[00:16:54.778] Server  LOG      ✓ Compiled in 34ms
-[00:18:54.045] Server  LOG      ✓ Compiled in 47ms
-[00:20:05.850] Server  LOG      ✓ Compiled in 86ms
-[00:20:09.942] Server  LOG      ✓ Compiled in 25ms
-[00:20:13.722] Server  LOG      ✓ Compiled in 27ms
-[00:20:21.449] Server  LOG      ✓ Compiled in 35ms
-[00:20:42.535] Browser ERROR   HEIC conversion error: {"code":2,"message":"ERR_LIBHEIF format not supported"}
-[00:20:42.535] Browser ERROR   HEIC conversion error: {"code":2,"message":"ERR_LIBHEIF format not supported"}
-[00:21:02.836] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
-[00:22:35.635] Server  WARN     ⚠ Cross origin request detected from 2c820884f940.ngrok-free.app to /_next/* resource. In a future major version of Next.js, you will need to explicitly configure "allowedDevOrigins" in next.config to allow this.
-Read more: https://nextjs.org/docs/app/api-reference/config/next-config-js/allowedDevOrigins
+[00:00:00.950] Server  LOG      ✓ Ready in 709ms
+[00:00:13.373] Server  LOG      ○ Compiling / ...
+[00:00:15.989] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:15.993] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:03:53.987] Server  LOG      ✓ Compiled in 232ms
+[00:04:00.311] Server  LOG      ✓ Compiled in 84ms
+[00:04:21.382] Server  LOG      ✓ Compiled in 131ms
+[00:04:29.639] Server  LOG      ✓ Compiled in 271ms
+[00:04:34.683] Server  LOG      ✓ Compiled in 47ms
+[00:04:40.056] Server  LOG      ✓ Compiled in 58ms
+[00:04:58.180] Server  LOG      ✓ Compiled in 83ms
+[00:05:06.064] Server  LOG      ✓ Compiled in 166ms
+[00:05:12.052] Server  LOG      ✓ Compiled in 57ms
+[00:05:17.557] Server  LOG      ✓ Compiled in 40ms
+[00:05:24.938] Server  LOG      ✓ Compiled in 57ms
+[00:05:29.995] Server  LOG      ✓ Compiled in 55ms
+[00:05:47.771] Server  LOG      ✓ Compiled in 59ms
+[00:09:30.094] Server  LOG      ✓ Compiled in 228ms
+[00:09:39.887] Server  LOG      ✓ Compiled in 77ms
+[00:11:44.776] Server  LOG      ✓ Compiled in 205ms
+[00:11:52.158] Server  LOG      ✓ Compiled in 85ms
+[00:12:10.883] Server  LOG      ✓ Compiled in 56ms
+[00:14:05.201] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:14:10.393] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:15:30.942] Server  LOG      ✓ Compiled in 192ms
+[00:15:38.279] Server  LOG      ✓ Compiled in 23ms
+[00:15:45.326] Server  LOG      ✓ Compiled in 62ms
+[00:24:18.090] Server  LOG      ✓ Compiled in 148ms
+[03:03:02.525] Server  LOG      ✓ Compiled in 126ms
+[03:03:14.812] Server  LOG      ✓ Compiled in 81ms
+[03:03:44.826] Server  LOG      ✓ Compiled in 207ms
+[03:03:53.626] Server  LOG      ✓ Compiled in 192ms
+[03:04:00.440] Server  LOG      ✓ Compiled in 222ms
+[03:04:07.186] Server  LOG      ✓ Compiled in 63ms
+[03:04:15.174] Server  LOG      ✓ Compiled in 87ms
+[03:04:21.480] Server  LOG      ✓ Compiled in 21ms
+[03:04:37.084] Server  LOG      ✓ Compiled in 75ms
+[03:04:44.966] Server  LOG      ✓ Compiled in 77ms
+[03:05:06.156] Server  LOG      ✓ Compiled in 98ms
+[03:05:13.979] Server  LOG      ✓ Compiled in 25ms
+[03:05:21.732] Server  LOG      ✓ Compiled in 63ms
+[03:05:30.997] Server  LOG      ✓ Compiled in 58ms
+[03:05:50.743] Server  LOG      ✓ Compiled in 64ms
+[03:05:57.873] Server  LOG      ✓ Compiled in 188ms
+[03:06:20.819] Server  LOG      ✓ Compiled in 53ms
+[03:06:26.716] Server  LOG      ✓ Compiled in 25ms
+[03:06:31.193] Server  LOG      ✓ Compiled in 38ms
+[03:06:35.747] Server  LOG      ✓ Compiled in 29ms
+[03:06:40.366] Server  LOG      ✓ Compiled in 45ms
+[03:06:46.678] Server  LOG      ✓ Compiled in 1318ms
+[03:07:10.531] Server  LOG      ✓ Compiled in 117ms
+[03:07:15.417] Server  LOG      ✓ Compiled in 29ms
+[03:07:20.138] Server  LOG      ✓ Compiled in 34ms
+[03:07:44.683] Server  LOG      ✓ Compiled in 131ms
+[03:07:49.806] Server  LOG      ✓ Compiled in 36ms
+[03:07:54.591] Server  LOG      ✓ Compiled in 30ms
+[03:07:59.192] Server  LOG      ✓ Compiled in 41ms
+[03:08:25.851] Server  LOG      ✓ Compiled in 110ms
+[03:08:25.966] Browser ERROR   ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx:379:9
+Ecmascript file had an error
+  377 |   }
+  378 |
+> 379 |   const t = getTranslations(language)
+      |         ^
+  380 |   const readyFiles = files.filter(f => f.status === 'ready' || f.status === 'uploading' || f.status === 'complete')
+  381 |   const canUpload = readyFiles.length > 0 && !uploading
+  382 |
+
+the name `t` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Server Component]
+    ./aabhas_kavita_wedding_gallery_frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Server Component]
+    ./aabhas_kavita_wedding_gallery_frontend/app/page.tsx [Server Component]
+[03:08:26.662] Browser ERROR   ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx:379:9
+Ecmascript file had an error
+  377 |   }
+  378 |
+> 379 |   const t = getTranslations(language)
+      |         ^
+  380 |   const readyFiles = files.filter(f => f.status === 'ready' || f.status === 'uploading' || f.status === 'complete')
+  381 |   const canUpload = readyFiles.length > 0 && !uploading
+  382 |
+
+the name `t` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Server Component]
+    ./aabhas_kavita_wedding_gallery_frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Server Component]
+    ./aabhas_kavita_wedding_gallery_frontend/app/page.tsx [Server Component]
+[03:08:26.663] Browser ERROR   ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx:379:9
+Ecmascript file had an error
+  377 |   }
+  378 |
+> 379 |   const t = getTranslations(language)
+      |         ^
+  380 |   const readyFiles = files.filter(f => f.status === 'ready' || f.status === 'uploading' || f.status === 'complete')
+  381 |   const canUpload = readyFiles.length > 0 && !uploading
+  382 |
+
+the name `t` is defined multiple times
+
+Import traces:
+  Client Component Browser:
+    ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Client Component Browser]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Server Component]
+    ./aabhas_kavita_wedding_gallery_frontend/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./aabhas_kavita_wedding_gallery_frontend/components/upload-modal.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/floating-upload-button.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Client Component SSR]
+    ./aabhas_kavita_wedding_gallery_frontend/components/home-page-client.tsx [Server Component]
+    ./aabhas_kavita_wedding_gallery_frontend/app/page.tsx [Server Component]
+[03:08:32.033] Server  LOG      ✓ Compiled in 65ms
+[03:11:06.752] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold

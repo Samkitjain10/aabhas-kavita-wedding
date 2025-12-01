@@ -1,12 +1,13 @@
 "use client"
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useEffect } from 'react'
 import { Modal } from './ui/modal'
 import { Button } from './ui/button'
 import { Upload, X, Sparkles, CheckCircle2, Image as ImageIcon, Video, Trash2 } from 'lucide-react'
 import imageCompression from 'browser-image-compression'
 import { motion, AnimatePresence } from 'framer-motion'
 import { compressVideo as compressVideoFile } from '@/lib/video'
+import { Language, translateFunctionName, getTranslations } from '@/lib/translations'
 
 interface Function {
   id: number
@@ -37,7 +38,28 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
   const [uploading, setUploading] = useState(false)
   const [overallProgress, setOverallProgress] = useState(0)
   const [error, setError] = useState<string | null>(null)
+  const [language, setLanguage] = useState<Language>('en')
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('wedding-gallery-language') as Language | null
+      if (savedLang === 'en' || savedLang === 'hi') {
+        setLanguage(savedLang)
+      }
+    }
+
+    const handleLanguageChange = (e: CustomEvent<Language>) => {
+      setLanguage(e.detail)
+    }
+
+    window.addEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    return () => {
+      window.removeEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    }
+  }, [])
+
+  const t = getTranslations(language)
 
   const toggleFunction = (functionId: number) => {
     setSelectedFunctions(prev =>
@@ -271,7 +293,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
 
   const handleUpload = async () => {
     if (files.length === 0) {
-      setError('Please select at least one file')
+      setError(t.upload.pleaseSelectFile)
       return
     }
     // Function selection is now optional - if none selected, will use "Other"
@@ -279,7 +301,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
     // Validate that we have ready files
     const readyFiles = files.filter(f => f.status === 'ready' || f.status === 'uploading' || f.status === 'complete')
     if (readyFiles.length === 0) {
-      setError('Please wait for files to be processed')
+      setError(t.upload.pleaseWaitProcessing)
       return
     }
 
@@ -315,7 +337,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
         })
 
         if (!response.ok) {
-          let errorMessage = 'Upload failed'
+          let errorMessage = t.upload.uploadFailed
           try {
             const errorData = await response.json()
             errorMessage = errorData.error || errorData.message || errorMessage
@@ -344,7 +366,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
         onClose()
       }, 1000)
     } catch (err: any) {
-      const errorMessage = err?.message || err?.error || 'Upload failed. Please try again.'
+      const errorMessage = err?.message || err?.error || t.upload.uploadFailed
       console.error('Upload error caught:', err)
       setError(errorMessage)
       setUploading(false)
@@ -358,7 +380,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
   const canUpload = readyFiles.length > 0 && !uploading
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title="Upload Your Memories" size="2xl">
+    <Modal isOpen={isOpen} onClose={onClose} title={t.upload.title} size="2xl">
       <div className="flex flex-col max-h-[70vh] sm:max-h-[75vh]">
         <div className="space-y-4 sm:space-y-6 overflow-y-auto flex-1 pb-4 scrollbar-hide">
         {/* Function Selection */}
@@ -367,9 +389,9 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
             className="block text-sm font-medium mb-3 px-1"
             style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1rem', color: '#2C2C2C' }}
           >
-            Select Function <span className="text-gray-400 text-xs block sm:inline">(Optional - will use "Other" if none selected)</span>
+            {t.upload.selectFunction} <span className="text-gray-400 text-xs block sm:inline">{t.upload.selectFunctionOptional}</span>
           </label>
-          <div className="grid grid-cols-2 gap-2 sm:gap-3 px-1 sm:pl-2">
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 px-1 sm:pl-2">
             {functions.map((func) => (
               <motion.button
                 key={func.id}
@@ -386,7 +408,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
                 {selectedFunctions.includes(func.id) && (
                   <CheckCircle2 className="inline h-3 w-3 sm:h-4 sm:w-4 sm:mr-2" />
                 )}
-                <span className="truncate">{func.name}</span>
+                <span className="truncate">{translateFunctionName(func.name, language)}</span>
               </motion.button>
             ))}
           </div>
@@ -398,7 +420,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
             className="block text-sm font-medium mb-3 px-1"
             style={{ fontFamily: 'var(--font-cormorant)', fontSize: '1rem', color: '#2C2C2C' }}
           >
-            Upload Photos or Videos (Multiple)
+            {t.upload.uploadPhotosVideos}
           </label>
           <div
             onDrop={handleDrop}
@@ -415,12 +437,12 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
               </motion.div>
               <div className="flex text-xs sm:text-sm text-gray-600 justify-center items-center gap-1 sm:gap-2 flex-wrap px-2">
                 <span className="font-medium text-[#D4AF37]" style={{ fontFamily: 'var(--font-cormorant)', fontSize: '0.95rem' }}>
-                  Upload files
+                  {t.upload.uploadFiles}
                 </span>
-                <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '0.95rem' }}>or drag and drop</span>
+                <span style={{ fontFamily: 'var(--font-cormorant)', fontSize: '0.95rem' }}>{t.upload.orDragAndDrop}</span>
               </div>
               <p className="text-xs text-gray-500 px-2" style={{ fontFamily: 'var(--font-cormorant)' }}>
-                PNG, JPG, GIF, HEIC, MP4, MOV up to 100MB each
+                {t.upload.fileTypes}
               </p>
             </div>
             <input
@@ -448,7 +470,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
                 className="text-sm font-medium mb-3"
                 style={{ fontFamily: 'var(--font-cormorant)', color: '#2C2C2C' }}
               >
-                Selected Files ({files.length})
+                {t.upload.selectedFiles} ({files.length})
               </h4>
               {files.map((fileWithPreview, index) => (
                 <motion.div
@@ -491,7 +513,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
                       {fileWithPreview.file.name}
                     </p>
                     <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4 mt-1 text-xs text-gray-600">
-                      <span>Size: {formatFileSize(fileWithPreview.originalSize)}</span>
+                      <span>{t.upload.size}: {formatFileSize(fileWithPreview.originalSize)}</span>
                     </div>
                     {fileWithPreview.status === 'compressing' && (
                       <div className="mt-2">
@@ -499,8 +521,8 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
                           <Sparkles className="h-4 w-4 animate-pulse" />
                           <span>
                             {fileWithPreview.type === 'video' 
-                              ? `Compressing video for best quality... ${Math.round(fileWithPreview.progress)}%`
-                              : 'Compressing for best quality...'}
+                              ? `${t.upload.compressing} ${Math.round(fileWithPreview.progress)}%`
+                              : t.upload.compressing}
                           </span>
                         </div>
                         {fileWithPreview.type === 'video' && fileWithPreview.progress > 0 && (
@@ -534,7 +556,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
                     {fileWithPreview.status === 'complete' && (
                       <div className="flex items-center gap-2 mt-2 text-xs text-green-600">
                         <CheckCircle2 className="h-4 w-4" />
-                        <span>Uploaded successfully</span>
+                        <span>{t.upload.uploadedSuccessfully}</span>
                       </div>
                     )}
                   </div>
@@ -564,7 +586,11 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
               exit={{ opacity: 0, height: 0 }}
             >
               <div className="flex justify-between text-sm mb-2" style={{ fontFamily: 'var(--font-cormorant)' }}>
-                <span className="text-gray-700">Uploading {readyFiles.filter(f => f.status === 'uploading' || f.status === 'complete').length} of {readyFiles.length} files...</span>
+                <span className="text-gray-700">
+                  {t.upload.uploadingFiles
+                    .replace('{current}', String(readyFiles.filter(f => f.status === 'uploading' || f.status === 'complete').length))
+                    .replace('{total}', String(readyFiles.length))}
+                </span>
                 <span className="text-[#D4AF37] font-semibold">{Math.round(overallProgress)}%</span>
               </div>
               <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
@@ -606,7 +632,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
             className="rounded-xl w-full sm:w-auto"
             style={{ fontFamily: 'var(--font-cormorant)' }}
           >
-            Cancel
+            {t.upload.cancel}
           </Button>
           <Button
             onClick={handleUpload}
@@ -629,7 +655,12 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
               }
             }}
           >
-            {uploading ? `Uploading... ${Math.round(overallProgress)}%` : `Upload ${readyFiles.length} File${readyFiles.length !== 1 ? 's' : ''}`}
+            {uploading 
+              ? `${t.upload.uploading} ${Math.round(overallProgress)}%` 
+              : readyFiles.length === 1 
+                ? `${t.upload.uploadFile}` 
+                : `${t.upload.uploadFiles} (${readyFiles.length})`
+            }
           </Button>
         </div>
       </div>

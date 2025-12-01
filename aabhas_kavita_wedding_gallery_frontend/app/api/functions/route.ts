@@ -14,26 +14,34 @@ export async function GET(request: NextRequest) {
     }
 
     let functions = await prisma.function.findMany({
-      orderBy: { createdAt: 'asc' },
+      select: {
+        id: true,
+        name: true,
+        priority: true,
+        createdAt: true,
+        updatedAt: true,
+      },
+      orderBy: { priority: 'asc' },
     })
 
-    // Ensure "Other" function exists
-    let otherFunction = functions.find(f => f.name === 'Other')
-    if (!otherFunction) {
-      otherFunction = await prisma.function.create({
+    // Ensure "Others" function exists
+    let othersFunction = functions.find(f => f.name === 'Others')
+    if (!othersFunction) {
+      othersFunction = await prisma.function.create({
         data: {
-          name: 'Other',
-          description: 'Miscellaneous photos and videos',
+          name: 'Others',
+          priority: 9,
         },
       })
-      functions.push(otherFunction)
+      functions.push(othersFunction)
     }
 
-    // Sort functions so "Other" appears last
+    // Sort functions by priority (Others should be last)
     functions = functions.sort((a, b) => {
-      if (a.name === 'Other') return 1
-      if (b.name === 'Other') return -1
-      return a.createdAt.getTime() - b.createdAt.getTime()
+      // If priority is 0 (old functions without priority), put them at the end
+      if (a.priority === 0 && b.priority !== 0) return 1
+      if (b.priority === 0 && a.priority !== 0) return -1
+      return a.priority - b.priority
     })
 
     return NextResponse.json({ functions })

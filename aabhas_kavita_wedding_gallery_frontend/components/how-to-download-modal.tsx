@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, Fragment } from 'react'
+import { useState, useEffect, Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { X } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -10,12 +10,48 @@ interface HowToDownloadModalProps {
   onClose: () => void
 }
 
-type Language = 'english' | 'hindi'
+type ModalLanguage = 'english' | 'hindi'
+type GlobalLanguage = 'en' | 'hi'
 type Platform = 'android' | 'ios'
 
 export function HowToDownloadModal({ isOpen, onClose }: HowToDownloadModalProps) {
   const [activeTab, setActiveTab] = useState<Platform>('android')
-  const [language, setLanguage] = useState<Language>('hindi')
+  const [globalLanguage, setGlobalLanguage] = useState<GlobalLanguage>('hi')
+  
+  // Convert global language (en/hi) to modal language (english/hindi)
+  const language: ModalLanguage = globalLanguage === 'en' ? 'english' : 'hindi'
+
+  useEffect(() => {
+    // Load language preference from localStorage
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('wedding-gallery-language') as GlobalLanguage | null
+      if (savedLang === 'en' || savedLang === 'hi') {
+        setGlobalLanguage(savedLang)
+      }
+    }
+
+    // Listen for language changes from the global language switcher
+    const handleLanguageChange = (e: CustomEvent<GlobalLanguage>) => {
+      setGlobalLanguage(e.detail)
+    }
+
+    window.addEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    return () => {
+      window.removeEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    }
+  }, [])
+
+  // Handle language change from modal buttons
+  const handleLanguageChange = (newLang: ModalLanguage) => {
+    const globalLang: GlobalLanguage = newLang === 'english' ? 'en' : 'hi'
+    setGlobalLanguage(globalLang)
+    
+    // Update localStorage and dispatch event to sync with other components
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('wedding-gallery-language', globalLang)
+      window.dispatchEvent(new CustomEvent('language-changed', { detail: globalLang }))
+    }
+  }
 
   const instructions = {
     english: {
@@ -126,7 +162,7 @@ export function HowToDownloadModal({ isOpen, onClose }: HowToDownloadModalProps)
                     {/* Language Selector */}
                     <div className="flex gap-2">
                       <button
-                        onClick={() => setLanguage('hindi')}
+                        onClick={() => handleLanguageChange('hindi')}
                         className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
                           language === 'hindi'
                             ? 'bg-[#D4AF37] text-white'
@@ -137,7 +173,7 @@ export function HowToDownloadModal({ isOpen, onClose }: HowToDownloadModalProps)
                         हिंदी
                       </button>
                       <button
-                        onClick={() => setLanguage('english')}
+                        onClick={() => handleLanguageChange('english')}
                         className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-semibold transition-all ${
                           language === 'english'
                             ? 'bg-[#D4AF37] text-white'

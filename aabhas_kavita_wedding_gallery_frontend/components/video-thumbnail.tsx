@@ -42,6 +42,17 @@ export function VideoThumbnail({ videoUrl, alt, className = '' }: VideoThumbnail
 
   return (
     <div className={`relative w-full h-full ${className}`}>
+      {/* Loading spinner overlay (shown until first frame is ready) */}
+      {!loaded && !error && (
+        <div className="absolute inset-0 z-20 flex items-center justify-center">
+          <div
+            className="h-10 w-10 rounded-full border-4 border-white/70 border-t-transparent animate-spin"
+            style={{ boxShadow: '0 2px 12px rgba(0,0,0,0.15)' }}
+            aria-label="Loading"
+          />
+        </div>
+      )}
+
       {/* Video element showing first frame as preview */}
       <video
         ref={videoRef}
@@ -52,13 +63,15 @@ export function VideoThumbnail({ videoUrl, alt, className = '' }: VideoThumbnail
         playsInline
         style={{ pointerEvents: 'none' }}
       />
-      
-      {/* Play button overlay */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="bg-white/20 backdrop-blur-sm rounded-full p-4 shadow-lg">
-          <Play className="h-8 w-8 text-white fill-white" />
+
+      {/* Play button overlay - only show after video has loaded */}
+      {loaded && !error && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="bg-black/55 backdrop-blur-sm rounded-full p-4 shadow-lg border border-white/40">
+            <Play className="h-8 w-8 text-white fill-white drop-shadow-md" />
+          </div>
         </div>
-      </div>
+      )}
 
       {/* Fallback if video fails to load */}
       {error && (

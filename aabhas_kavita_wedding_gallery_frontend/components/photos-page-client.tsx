@@ -1,9 +1,10 @@
 "use client"
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Download } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { PhotosGrid } from './photos-grid'
+import { Language, getTranslations } from '@/lib/translations'
 
 interface Photo {
   id: number
@@ -19,6 +20,27 @@ interface PhotosPageClientProps {
 
 export function PhotosPageClient({ functionId, photos }: PhotosPageClientProps) {
   const [isSelectionMode, setIsSelectionMode] = useState(false)
+  const [language, setLanguage] = useState<Language>('en')
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const savedLang = localStorage.getItem('wedding-gallery-language') as Language | null
+      if (savedLang === 'en' || savedLang === 'hi') {
+        setLanguage(savedLang)
+      }
+    }
+
+    const handleLanguageChange = (e: CustomEvent<Language>) => {
+      setLanguage(e.detail)
+    }
+
+    window.addEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    return () => {
+      window.removeEventListener('language-changed' as any, handleLanguageChange as EventListener)
+    }
+  }, [])
+
+  const t = getTranslations(language)
 
   return (
     <>
@@ -35,7 +57,7 @@ export function PhotosPageClient({ functionId, photos }: PhotosPageClientProps) 
         >
           <Download className="h-4 w-4 mr-2" />
           <span className="font-semibold">
-            {isSelectionMode ? 'Cancel Selection' : 'Download Multiple'}
+            {isSelectionMode ? t.common.cancelSelection : t.common.downloadMultiple}
           </span>
         </Button>
       </div>
