@@ -4,17 +4,16 @@
   "private": true,
   "description": "Wedding gallery application with frontend and backend",
   "scripts": {
+    "dev": "cd aabhas_kavita_wedding_gallery_frontend && npm run dev",
     "dev:frontend": "cd aabhas_kavita_wedding_gallery_frontend && npm run dev",
-    "dev:backend": "cd aabhas_kavita_wedding_gallery_backend && npm run dev",
+    "build": "cd aabhas_kavita_wedding_gallery_frontend && npm run build",
     "build:frontend": "cd aabhas_kavita_wedding_gallery_frontend && npm run build",
-    "build:backend": "cd aabhas_kavita_wedding_gallery_backend && npm run build",
+    "install": "cd aabhas_kavita_wedding_gallery_frontend && npm install",
     "install:frontend": "cd aabhas_kavita_wedding_gallery_frontend && npm install",
-    "install:backend": "cd aabhas_kavita_wedding_gallery_backend && npm install",
-    "install:all": "npm run install:frontend && npm run install:backend",
-    "db:generate": "cd aabhas_kavita_wedding_gallery_backend && npm run db:generate",
-    "db:migrate": "cd aabhas_kavita_wedding_gallery_backend && npm run db:migrate",
-    "db:seed": "cd aabhas_kavita_wedding_gallery_backend && npm run db:seed",
-    "db:studio": "cd aabhas_kavita_wedding_gallery_backend && npm run db:studio"
+    "db:generate": "cd aabhas_kavita_wedding_gallery_frontend && npm run db:generate",
+    "db:migrate": "cd aabhas_kavita_wedding_gallery_frontend && npx prisma migrate dev",
+    "db:seed": "cd aabhas_kavita_wedding_gallery_frontend && npx tsx prisma/seed.ts",
+    "db:studio": "cd aabhas_kavita_wedding_gallery_frontend && npx prisma studio"
   }
 }
 

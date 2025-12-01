@@ -6,7 +6,7 @@ import { Button } from './ui/button'
 import { Upload, X, Sparkles, CheckCircle2, Image as ImageIcon, Video, Trash2 } from 'lucide-react'
 import imageCompression from 'browser-image-compression'
 import { motion, AnimatePresence } from 'framer-motion'
-import { compressVideo as compressVideoFile } from '@/lib/video'
+// Video compression removed - videos are uploaded as-is
 import { Language, translateFunctionName, getTranslations } from '@/lib/translations'
 
 interface Function {
@@ -130,18 +130,7 @@ export function UploadModal({ isOpen, onClose, functions, onUploadComplete }: Up
     return await imageCompression(fileToCompress, options)
   }
 
-  const compressVideo = async (
-    file: File,
-    onProgress?: (progress: number) => void
-  ): Promise<File> => {
-    try {
-      const compressed = await compressVideoFile(file, onProgress)
-      return compressed
-    } catch (error) {
-      console.error('Video compression error:', error)
-      return file
-    }
-  }
+  // Videos are uploaded as-is (no compression needed)
 
   const handleFilesChange = useCallback(async (selectedFiles: FileList | null) => {
     if (!selectedFiles || selectedFiles.length === 0) return
